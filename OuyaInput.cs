@@ -521,9 +521,9 @@ public static class OuyaInput
                 	playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;		// checked
                 	playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;		// checked
 			// the GameStick controller has no triggers at all
-				playerController.map_LT = null; playerController.invert_LT = false;
-                playerController.map_RT = null; playerController.invert_RT = false;
-                break;
+			playerController.map_LT = null; playerController.invert_LT = false;
+                	playerController.map_RT = null; playerController.invert_RT = false;
+                	break;
 
             	case OuyaControllerType.Ouya:
                		playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
