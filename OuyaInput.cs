@@ -147,13 +147,13 @@ public static class OuyaInput
 			 */
 			switch (ouyaButton) {
 			case OuyaAxis.LX: return map_LX;
-            case OuyaAxis.LY: return map_LY;
-            case OuyaAxis.RX: return map_RX;
-            case OuyaAxis.RY: return map_RY;
-            case OuyaAxis.LT: return map_LT;
-            case OuyaAxis.RT: return map_RT;
-            case OuyaAxis.DX: return map_DX;
-            case OuyaAxis.DY: return map_DY;
+            		case OuyaAxis.LY: return map_LY;
+            		case OuyaAxis.RX: return map_RX;
+           		case OuyaAxis.RY: return map_RY;
+            		case OuyaAxis.LT: return map_LT;
+            		case OuyaAxis.RT: return map_RT;
+            		case OuyaAxis.DX: return map_DX;
+            		case OuyaAxis.DY: return map_DY;
 			default: return null;
 			}
 		}
@@ -163,13 +163,13 @@ public static class OuyaInput
 			 */
 			switch (ouyaButton) {
 			case OuyaAxis.LX: return invert_LX;
-            case OuyaAxis.LY: return invert_LY;
-            case OuyaAxis.RX: return invert_RX;
-            case OuyaAxis.RY: return invert_RY;
-            case OuyaAxis.LT: return invert_LT;
-            case OuyaAxis.RT: return invert_RT;
-            case OuyaAxis.DX: return invert_DX;
-            case OuyaAxis.DY: return invert_DY;
+            		case OuyaAxis.LY: return invert_LY;
+            		case OuyaAxis.RX: return invert_RX;
+           		case OuyaAxis.RY: return invert_RY;
+            		case OuyaAxis.LT: return invert_LT;
+            		case OuyaAxis.RT: return invert_RT;
+            		case OuyaAxis.DX: return invert_DX;
+            		case OuyaAxis.DY: return invert_DY;
 			default: return false;
 			}
 		}
@@ -341,13 +341,13 @@ public static class OuyaInput
 		 * this should be called at Start() and in Update()
 		 */
 		// we only do a joystick plug check every 3 seconds
-        if ((Time.time - lastPlugCheckTime) > 3f) {
+        	if ((Time.time - lastPlugCheckTime) > 3f) {
 			// store the time of the current plug check
-            lastPlugCheckTime = Time.time;
+            		lastPlugCheckTime = Time.time;
 			
 			/* GET CONTROLLERS */
 			// get joystick names from Unity
-            controllerNames = Input.GetJoystickNames();
+            		controllerNames = Input.GetJoystickNames();
 			
 			/* MAP CONTROLLERS */
 			// create a controller types eum array
@@ -395,9 +395,9 @@ public static class OuyaInput
 					playerControllers[i] = null;
 				}
 			}
-        }
+        	}
 		/* CONTINIOUS JOYSTICK LIST */
-    	// this block is a state manager that allows to get button events for native axes buttons
+    		// this block is a state manager that allows to get button events for native axes buttons
 		if (scanContiniously && controllerNames != null && controllerNames.Length > 0)
 		{
 			// scan controllers to gather button down or up events for triggers
@@ -451,13 +451,13 @@ public static class OuyaInput
 				controllerTypes[index] = OuyaControllerType.GameStick;
 				return OuyaControllerType.GameStick;
 			case "XBOX 360 WIRELESS RECEIVER":
-            case "CONTROLLER (AFTERGLOW GAMEPAD FOR XBOX 360)":
-            case "CONTROLLER (ROCK CANDY GAMEPAD FOR XBOX 360)":
-            case "CONTROLLER (XBOX 360 WIRELESS RECEIVER FOR WINDOWS)":
-            case "MICROSOFT X-BOX 360 PAD":
-            case "CONTROLLER (XBOX 360 FOR WINDOWS)":
-            case "CONTROLLER (XBOX360 GAMEPAD)":
-            case "XBOX 360 FOR WINDOWS (CONTROLLER)":
+            		case "CONTROLLER (AFTERGLOW GAMEPAD FOR XBOX 360)":
+           		case "CONTROLLER (ROCK CANDY GAMEPAD FOR XBOX 360)":
+            		case "CONTROLLER (XBOX 360 WIRELESS RECEIVER FOR WINDOWS)":
+            		case "MICROSOFT X-BOX 360 PAD":
+            		case "CONTROLLER (XBOX 360 FOR WINDOWS)":
+            		case "CONTROLLER (XBOX360 GAMEPAD)":
+            		case "XBOX 360 FOR WINDOWS (CONTROLLER)":
 				controllerTypes[index] = OuyaControllerType.XBox360;
 				return OuyaControllerType.XBox360;
 			case "MOTIONINJOY VIRTUAL GAME CONTROLLER":
@@ -501,147 +501,147 @@ public static class OuyaInput
 		switch (playerController.controllerType)
 		{
 #if !UNITY_EDITOR && UNITY_ANDROID
-            case OuyaControllerType.Broadcom:
-            case OuyaControllerType.MogaPro:
+            	case OuyaControllerType.Broadcom:
+            	case OuyaControllerType.MogaPro:
            		playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = false;
-                playerController.map_LT = string.Format("Joy{0} Axis 8", player); playerController.invert_LT = false;
-                playerController.map_RT = string.Format("Joy{0} Axis 7", player); playerController.invert_RT = false;
-                playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;
-                playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = false;
-				break;
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = false;
+                	playerController.map_LT = string.Format("Joy{0} Axis 8", player); playerController.invert_LT = false;
+                	playerController.map_RT = string.Format("Joy{0} Axis 7", player); playerController.invert_RT = false;
+                	playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;
+                	playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = false;
+			break;
 			
-			case OuyaControllerType.GameStick:
+		case OuyaControllerType.GameStick:
            		playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-                playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;		// checked
-                playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;		// checked
-				// the GameStick controller has no triggers at all
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+                	playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;		// checked
+                	playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;		// checked
+			// the GameStick controller has no triggers at all
 				playerController.map_LT = null; playerController.invert_LT = false;
                 playerController.map_RT = null; playerController.invert_RT = false;
                 break;
 
-            case OuyaControllerType.Ouya:
-                playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-                playerController.map_LT = string.Format("Joy{0} Axis 5", player); playerController.invert_LT = false;		// checked
-                playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked
-                // the dpad is not analog and therefore not mapped as an axis		
-				playerController.map_DX = null; playerController.invert_DX = false;
-				playerController.map_DY = null; playerController.invert_DY = false;	
-				break;
+            	case OuyaControllerType.Ouya:
+               		playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+                	playerController.map_LT = string.Format("Joy{0} Axis 5", player); playerController.invert_LT = false;		// checked
+                	playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked
+                	// the dpad is not analog and therefore not mapped as an axis		
+			playerController.map_DX = null; playerController.invert_DX = false;
+			playerController.map_DY = null; playerController.invert_DY = false;	
+			break;
 #endif
-			case OuyaControllerType.XBox360:
+		case OuyaControllerType.XBox360:
 #if !UNITY_EDITOR && UNITY_ANDROID 
-				playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-                playerController.map_LT = string.Format("Joy{0} Axis 7", player); playerController.invert_LT = false;		// checked
-                playerController.map_RT = string.Format("Joy{0} Axis 8", player); playerController.invert_RT = false;		// checked
-                playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;		// checked
-                playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;		// checked
+			playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+               		playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+                	playerController.map_LT = string.Format("Joy{0} Axis 7", player); playerController.invert_LT = false;		// checked
+                	playerController.map_RT = string.Format("Joy{0} Axis 8", player); playerController.invert_RT = false;		// checked
+                	playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;		// checked
+                	playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;		// checked
 #else
-                playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 4", player); playerController.invert_RX = false;		// checked		
-                playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
-                playerController.map_LT = string.Format("Joy{0} Axis 9", player); playerController.invert_LT = false;		// checked
-                playerController.map_RT = string.Format("Joy{0} Axis 10", player); playerController.invert_RT = false;		// checked
-                playerController.map_DX = string.Format("Joy{0} Axis 6", player); playerController.invert_DX = false;		// checked
-                playerController.map_DY = string.Format("Joy{0} Axis 7", player); playerController.invert_DY = false;		// checked
+                	playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                	playerController.map_RX = string.Format("Joy{0} Axis 4", player); playerController.invert_RX = false;		// checked		
+                	playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
+                	playerController.map_LT = string.Format("Joy{0} Axis 9", player); playerController.invert_LT = false;		// checked
+                	playerController.map_RT = string.Format("Joy{0} Axis 10", player); playerController.invert_RT = false;		// checked
+                	playerController.map_DX = string.Format("Joy{0} Axis 6", player); playerController.invert_DX = false;		// checked
+                	playerController.map_DY = string.Format("Joy{0} Axis 7", player); playerController.invert_DY = false;		// checked
 #endif
-                break;
-			case OuyaControllerType.PS3:
+                	break;
+		case OuyaControllerType.PS3:
 #if !UNITY_EDITOR && UNITY_ANDROID
-                playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-                playerController.map_LT = string.Format("Joy{0} Axis 5", player); playerController.invert_LT = false;		// checked
-                playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked
-				// the dpad is not analog and therefore not mapped as an axis	
-				playerController.map_DX = null; playerController.invert_DX = false;
-				playerController.map_DY = null; playerController.invert_DY = false;	
-#elif !UNITY_EDITOR && UNITY_STANDALONE_WIN
-                playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 4", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
-                playerController.map_LT = string.Format("Joy{0} Axis 3", player); playerController.invert_LT = false;		// checked
-                playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked	
-				// the dpad is not analog and therefore not mapped as an axis	
-				playerController.map_DX = null; playerController.invert_DX = false;
-				playerController.map_DY = null; playerController.invert_DY = false;					
-#elif !UNITY_EDITOR && UNITY_STANDALONE_OSX
- 				playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-				// d-pad and triggers are not analog and therefore not mapped as an axis
-                playerController.map_LT = null; playerController.invert_LT = false;
-                playerController.map_RT = null; playerController.invert_RT = false;	
-				playerController.map_DX = null; playerController.invert_DX = false;
-				playerController.map_DY = null; playerController.invert_DY = false;
-#elif UNITY_EDITOR
-				// in the editor we have to set on which platform we are working
-				// different editor working environments are not covered by Unity's macros
-				if (editorWorkPlatform == EditorWorkPlatform.MacOS) // MacOSX standard Bluetooth connection
-				{
-					playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-	                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-	                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-	                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-					// d-pad and triggers are not analog and therefore not mapped as an axis	
-					playerController.map_LT = null; playerController.invert_LT = false;		
-	                playerController.map_RT = null; playerController.invert_RT = false;		
-					playerController.map_DX = null; playerController.invert_DX = false;
-					playerController.map_DY = null; playerController.invert_DY = false;
-				}
-				else // this is for Windows7 using the MotionInJoy driver with custom settings
-				{
-					playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
                		playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+                	playerController.map_LT = string.Format("Joy{0} Axis 5", player); playerController.invert_LT = false;		// checked
+                	playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked
+			// the dpad is not analog and therefore not mapped as an axis	
+			playerController.map_DX = null; playerController.invert_DX = false;
+			playerController.map_DY = null; playerController.invert_DY = false;	
+#elif !UNITY_EDITOR && UNITY_STANDALONE_WIN
+                	playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
                 	playerController.map_RX = string.Format("Joy{0} Axis 4", player); playerController.invert_RX = false;		// checked
-               		playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
                 	playerController.map_LT = string.Format("Joy{0} Axis 3", player); playerController.invert_LT = false;		// checked
                 	playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked	
-					// the dpad is not analog and therefore not mapped as an axis	
-					playerController.map_DX = null; playerController.invert_DX = false;
-					playerController.map_DY = null; playerController.invert_DY = false;
-				}
-#endif
-				break;
-#if UNITY_EDITOR || UNITY_STANDALONE_OSX
-            case OuyaControllerType.TattieBogle: //this is the driver for the XBOX360 controller on MacOSX
-                playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
-                playerController.map_LT = string.Format("Joy{0} Axis 5", player); playerController.invert_LT = false;		// checked -1 > 1
-                playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked -1 > 1
-                // the dpad is not analog and therefore not mapped as an axis
+			// the dpad is not analog and therefore not mapped as an axis	
+			playerController.map_DX = null; playerController.invert_DX = false;
+			playerController.map_DY = null; playerController.invert_DY = false;					
+#elif !UNITY_EDITOR && UNITY_STANDALONE_OSX
+ 			playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+			// d-pad and triggers are not analog and therefore not mapped as an axis
+                	playerController.map_LT = null; playerController.invert_LT = false;
+                	playerController.map_RT = null; playerController.invert_RT = false;	
+			playerController.map_DX = null; playerController.invert_DX = false;
+			playerController.map_DY = null; playerController.invert_DY = false;
+#elif UNITY_EDITOR
+			// in the editor we have to set on which platform we are working
+			// different editor working environments are not covered by Unity's macros
+			if (editorWorkPlatform == EditorWorkPlatform.MacOS) // MacOSX standard Bluetooth connection
+			{
+				playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+	                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+	                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+	                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+				// d-pad and triggers are not analog and therefore not mapped as an axis	
+				playerController.map_LT = null; playerController.invert_LT = false;		
+	                	playerController.map_RT = null; playerController.invert_RT = false;		
 				playerController.map_DX = null; playerController.invert_DX = false;
 				playerController.map_DY = null; playerController.invert_DY = false;
-                break;
+			}
+			else // this is for Windows7 using the MotionInJoy driver with custom settings
+			{
+				playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+               			playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                		playerController.map_RX = string.Format("Joy{0} Axis 4", player); playerController.invert_RX = false;		// checked
+               			playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
+                		playerController.map_LT = string.Format("Joy{0} Axis 3", player); playerController.invert_LT = false;		// checked
+                		playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked	
+				// the dpad is not analog and therefore not mapped as an axis	
+				playerController.map_DX = null; playerController.invert_DX = false;
+				playerController.map_DY = null; playerController.invert_DY = false;
+			}
 #endif
-			case OuyaControllerType.Unknown: // we hope to catch any unkown bluetooth controllers
-                playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;
-                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;
-                playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;
-                playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;
-                playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;
-                playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;
-				playerController.map_LT = string.Format("Joy{0} Axis 7", player); playerController.invert_LT = false;
-                playerController.map_RT = string.Format("Joy{0} Axis 8", player); playerController.invert_RT = false;
-				break;
-        }
+			break;
+#if UNITY_EDITOR || UNITY_STANDALONE_OSX
+            	case OuyaControllerType.TattieBogle: //this is the driver for the XBOX360 controller on MacOSX
+                	playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;		// checked
+                	playerController.map_LT = string.Format("Joy{0} Axis 5", player); playerController.invert_LT = false;		// checked -1 > 1
+               		playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked -1 > 1
+                	// the dpad is not analog and therefore not mapped as an axis
+			playerController.map_DX = null; playerController.invert_DX = false;
+			playerController.map_DY = null; playerController.invert_DY = false;
+                	break;
+#endif
+		case OuyaControllerType.Unknown: // we hope to catch any unkown bluetooth controllers
+               		playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;
+                	playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;
+                	playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;
+                	playerController.map_RY = string.Format("Joy{0} Axis 4", player); playerController.invert_RY = true;
+                	playerController.map_DX = string.Format("Joy{0} Axis 5", player); playerController.invert_DX = false;
+                	playerController.map_DY = string.Format("Joy{0} Axis 6", player); playerController.invert_DY = true;
+			playerController.map_LT = string.Format("Joy{0} Axis 7", player); playerController.invert_LT = false;
+                	playerController.map_RT = string.Format("Joy{0} Axis 8", player); playerController.invert_RT = false;
+			break;
+        	}
 	}
 	#endregion
 	
@@ -689,16 +689,16 @@ public static class OuyaInput
         
 		// check if there have more players than controllers
 		// we consider that the array position is starting at 0 for player 1
-        int playerIndex = (int)player - 1;
-        if (playerIndex < 0 || playerIndex >= controllerTypes.Length) return 0f;
+        	int playerIndex = (int)player - 1;
+        	if (playerIndex < 0 || playerIndex >= controllerTypes.Length) return 0f;
 		
 		// finally check if we really found a controller for the player
-        OuyaControllerType controllerType = controllerTypes[playerIndex];
-        if (controllerType == null) return 0f;
+        	OuyaControllerType controllerType = controllerTypes[playerIndex];
+        	if (controllerType == null) return 0f;
 	
 		/* GET MAPPED AXIS NAME */ 
 		// prepare fields for storing the results
-        string axisName = null; bool invert = false;
+        	string axisName = null; bool invert = false;
 		
 		// get the controller mapping for the player
 		PlayerController playerController = playerControllers[playerIndex];
@@ -709,10 +709,10 @@ public static class OuyaInput
 			/* JOYSTICKS */ 
 			// get the axis name for the player controller
 			switch (axis) {
-	        case OuyaAxis.LX: axisName = playerController.map_LX; invert = playerController.invert_LX; break;
-	       	case OuyaAxis.LY: axisName = playerController.map_LY; invert = playerController.invert_LY; break;
-	        case OuyaAxis.RX: axisName = playerController.map_RX; invert = playerController.invert_RX; break;
-	       	case OuyaAxis.RY: axisName = playerController.map_RY; invert = playerController.invert_RY; break;
+	        	case OuyaAxis.LX: axisName = playerController.map_LX; invert = playerController.invert_LX; break;
+	       		case OuyaAxis.LY: axisName = playerController.map_LY; invert = playerController.invert_LY; break;
+	        	case OuyaAxis.RX: axisName = playerController.map_RX; invert = playerController.invert_RX; break;
+	       		case OuyaAxis.RY: axisName = playerController.map_RY; invert = playerController.invert_RY; break;
 	       
 			/* TRIGGERS & D-PAD */ 
 			// the dpad and triggers are sometimes treated like an axis joystick
@@ -785,9 +785,10 @@ public static class OuyaInput
 						break;
 #endif
 					}
-				} break;
+				}
+				break;
 			/* DY-AXIS */
-	        case OuyaAxis.DY: axisName = playerController.map_DY; invert = playerController.invert_DY;
+	        	case OuyaAxis.DY: axisName = playerController.map_DY; invert = playerController.invert_DY;
 				// if the dpad is treated like a button we convert button press bool flags into axis values
 				if (axisName == null)
 				{
@@ -829,28 +830,29 @@ public static class OuyaInput
 						break;
 #endif
 					}
-				} break;
+				}
+				break;
 	        
 			default: return 0f;
 			}
-        }
+       		}
 		/* FINAL SECURITY CHECK */ 
 		// we return 0 if we didn't find a valid axis
-        if (axisName == null) return 0f;
+        	if (axisName == null) return 0f;
 		
 		/* TRIGGER AXIS RANGE MAPPING */ 
 		if (axis == OuyaAxis.LT || axis == OuyaAxis.RT) {
 			// some trigger axis need to be remapped inrange before we can return the Unity Input
 			if (invert) return playerController.rangeMapTriggerAxis(-Input.GetAxisRaw(axisName), axis);
-        	else return playerController.rangeMapTriggerAxis(Input.GetAxisRaw(axisName), axis);
+        		else return playerController.rangeMapTriggerAxis(Input.GetAxisRaw(axisName), axis);
 		}
 		/* AXIS FLOAT RESULT FROM UNITY INPUT */ 
 		if (invert) return -Input.GetAxisRaw(axisName);
-        else return Input.GetAxisRaw(axisName);
+        	else return Input.GetAxisRaw(axisName);
 		
 		/* SECURITY FALL THROUGH RETURN */ 
-        return 0f;
-    }
+        	return 0f;
+    	}
 	#endregion
 	
 	#region BUTTON ACTION ACCESS
@@ -892,16 +894,16 @@ public static class OuyaInput
 		
 		/* NULL SECURITY */ 
 		// check if there is no joystick connected
-        if (controllerNames == null) return false;
+        	if (controllerNames == null) return false;
         
 		// check if there are more players than joysticks
 		// this is not really needed in CLARK – just framework coherence
-        int playerIndex = (int) player - 1;
-        if (playerIndex >= controllerTypes.Length) return false;
+        	int playerIndex = (int) player - 1;
+        	if (playerIndex >= controllerTypes.Length) return false;
 		
 		// finally check if we really found a joystick for the player
-        OuyaControllerType controllerType = controllerTypes[playerIndex];
-        if (controllerType == null) return false;
+       		OuyaControllerType controllerType = controllerTypes[playerIndex];
+       		if (controllerType == null) return false;
 		
 		// get the controller mapping for the player
 		PlayerController playerController = playerControllers[playerIndex];
@@ -914,494 +916,494 @@ public static class OuyaInput
 #if !UNITY_EDITOR && UNITY_ANDROID
         	case OuyaControllerType.Broadcom:
         	case OuyaControllerType.MogaPro:
-				// this device was not tested yet
-				// the setting were just extracted from some examples I found
-				// please feedback if you find a way to test it
-                switch (button)
-				{
-				// shoulder buttons
-                case OuyaButton.LB:		return GetButton(6, buttonAction, player);
-                case OuyaButton.RB:		return GetButton(7, buttonAction, player);
+			// this device was not tested yet
+			// the setting were just extracted from some examples I found
+			// please feedback if you find a way to test it
+                	switch (button)
+			{
+			// shoulder buttons
+                	case OuyaButton.LB:	return GetButton(6, buttonAction, player);
+                	case OuyaButton.RB:	return GetButton(7, buttonAction, player);
 				
-				// OUYA buttons
-                case OuyaButton.O:		return GetButton(0, buttonAction, player);
-                case OuyaButton.U:		return GetButton(3, buttonAction, player);
-                case OuyaButton.Y:		return GetButton(4, buttonAction, player);
-                case OuyaButton.A:		return GetButton(1, buttonAction, player);
+			// OUYA buttons
+                	case OuyaButton.O:	return GetButton(0, buttonAction, player);
+                	case OuyaButton.U:	return GetButton(3, buttonAction, player);
+                	case OuyaButton.Y:	return GetButton(4, buttonAction, player);
+                	case OuyaButton.A:	return GetButton(1, buttonAction, player);
 					
-				// stick buttons	
-                case OuyaButton.L3:		return GetButton(13, buttonAction, player);
-                case OuyaButton.R3:		return GetButton(14, buttonAction, player);
+			// stick buttons	
+               		case OuyaButton.L3:	return GetButton(13, buttonAction, player);
+                	case OuyaButton.R3:	return GetButton(14, buttonAction, player);
 						
-				// d-pad buttons and trigger buttons
-				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
-                case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.LT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
-                case OuyaButton.RT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+			// d-pad buttons and trigger buttons
+			// these buttons are two axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these	
+               		case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+                	case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
 			
-				// not defined so far
-				case OuyaButton.START: 	return false;
-				case OuyaButton.SELECT: return false;
-				case OuyaButton.SYSTEM:	return false;	
-                default: return false;
-                }
-				break;
+			// not defined so far
+			case OuyaButton.START: 	return false;
+			case OuyaButton.SELECT: return false;
+			case OuyaButton.SYSTEM:	return false;	
+                	default: return false;
+                	}
+			break;
 
-			case OuyaControllerType.GameStick:
-				// tested on the real GameStick DevKit
-				// never succeded in pairing the controller with the Ouya, Mac, Windows
-				// strangely enough the flat d-pad has pressure sensitive axis output
-				// triggers do not exist at all on this controller
-				switch (button)
-				{
-				// OUYA buttons
-				case OuyaButton.O: 		return GetButton(0, buttonAction, player);		// checked
-                case OuyaButton.U: 		return GetButton(3, buttonAction, player);		// checked
-                case OuyaButton.Y: 		return GetButton(4, buttonAction, player);		// checked
-                case OuyaButton.A: 		return GetButton(1, buttonAction, player);		// checked
+		case OuyaControllerType.GameStick:
+			// tested on the real GameStick DevKit
+			// never succeded in pairing the controller with the Ouya, Mac, Windows
+			// strangely enough the flat d-pad has pressure sensitive axis output
+			// triggers do not exist at all on this controller
+			switch (button)
+			{
+			// OUYA buttons
+			case OuyaButton.O: 	return GetButton(0, buttonAction, player);		// checked
+	                case OuyaButton.U: 	return GetButton(3, buttonAction, player);		// checked
+                	case OuyaButton.Y: 	return GetButton(4, buttonAction, player);		// checked
+                	case OuyaButton.A: 	return GetButton(1, buttonAction, player);		// checked
 					
-				// shoulder buttons	
-                case OuyaButton.LB: 	return GetButton(6, buttonAction, player);		// checked
-                case OuyaButton.RB: 	return GetButton(7, buttonAction, player);		// checked
+			// shoulder buttons	
+                	case OuyaButton.LB: 	return GetButton(6, buttonAction, player);		// checked
+                c	ase OuyaButton.RB: 	return GetButton(7, buttonAction, player);		// checked
                 	
-				// stick buttons	
-                case OuyaButton.L3: 	return GetButton(13, buttonAction, player);		// checked
-                case OuyaButton.R3: 	return GetButton(14, buttonAction, player);		// checked
+			// stick buttons	
+                	case OuyaButton.L3: 	return GetButton(13, buttonAction, player);		// checked
+                	case OuyaButton.R3: 	return GetButton(14, buttonAction, player);		// checked
 					
-				// center buttons	
-				case OuyaButton.SELECT: return GetButton(27, buttonAction, player);		// checked			
-                case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked	
+			// center buttons	
+			case OuyaButton.SELECT: return GetButton(27, buttonAction, player);		// checked			
+               		case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked	
 										
-				// d-pad buttons
-				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
-                case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);													
+			// d-pad buttons
+			// these buttons are two axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these	
+                	case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);													
 			
-				// the GameStick has no triggers
-				case OuyaButton.LT: return false;
-				case OuyaButton.RT: return false;
+			// the GameStick has no triggers
+			case OuyaButton.LT: return false;
+			case OuyaButton.RT: return false;
 					
-				// SYSTEN is according to GameStick documents: joystick button 20
-				// but this is not valid in Unity (see script reference Keycode)
-                case OuyaButton.SYSTEM: return false;
-				default: return false;
-                }
-            	break;
+			// SYSTEN is according to GameStick documents: joystick button 20
+			// but this is not valid in Unity (see script reference Keycode)
+                	case OuyaButton.SYSTEM: return false;
+			default: return false;
+	                }
+            		break;
 
-			case OuyaControllerType.Ouya:
-				// tested on the real Ouya Developers Console
-				// never succeded in pairing the controller with the Mac / Windows
-				// the d-pad has no pressure sensitive output although the hardware looks like it
-				// triggers have both: pressure sensitive axis and button event output (nice)
-				switch (button)
-				{
-				// shoulder buttons
-                case OuyaButton.LB: 	return GetButton(4, buttonAction, player);		// checked
-                case OuyaButton.RB: 	return GetButton(5, buttonAction, player);		// checked
+		case OuyaControllerType.Ouya:
+			// tested on the real Ouya Developers Console
+			// never succeded in pairing the controller with the Mac / Windows
+			// the d-pad has no pressure sensitive output although the hardware looks like it
+			// triggers have both: pressure sensitive axis and button event output (nice)
+			switch (button)
+			{
+			// shoulder buttons
+                	case OuyaButton.LB: 	return GetButton(4, buttonAction, player);		// checked
+                	case OuyaButton.RB: 	return GetButton(5, buttonAction, player);		// checked
 					
-				// OUYA buttons	
-                case OuyaButton.O:		return GetButton(0, buttonAction, player);		// checked
-                case OuyaButton.U:		return GetButton(1, buttonAction, player);		// checked
-                case OuyaButton.Y:		return GetButton(2, buttonAction, player);		// checked
-                case OuyaButton.A:		return GetButton(3, buttonAction, player);		// checked
+			// OUYA buttons	
+                	case OuyaButton.O:	return GetButton(0, buttonAction, player);		// checked
+                	case OuyaButton.U:	return GetButton(1, buttonAction, player);		// checked
+                	case OuyaButton.Y:	return GetButton(2, buttonAction, player);		// checked
+                	case OuyaButton.A:	return GetButton(3, buttonAction, player);		// checked
 					
-				// stick buttons
-                case OuyaButton.L3:		return GetButton(6, buttonAction, player);		// checked
-                case OuyaButton.R3:		return GetButton(7, buttonAction, player);		// checked
+			// stick buttons
+                	case OuyaButton.L3:	return GetButton(6, buttonAction, player);		// checked
+                	case OuyaButton.R3:	return GetButton(7, buttonAction, player);		// checked
 					
-				// d-pad buttons
-                case OuyaButton.DU:		return GetButton(8, buttonAction, player);		// checked
-                case OuyaButton.DD:		return GetButton(9, buttonAction, player);		// checked
-                case OuyaButton.DL:		return GetButton(10, buttonAction, player);		// checked
-                case OuyaButton.DR:		return GetButton(11, buttonAction, player);		// checked
+			// d-pad buttons
+                	case OuyaButton.DU:	return GetButton(8, buttonAction, player);		// checked
+                	case OuyaButton.DD:	return GetButton(9, buttonAction, player);		// checked
+                	case OuyaButton.DL:	return GetButton(10, buttonAction, player);		// checked
+                	case OuyaButton.DR:	return GetButton(11, buttonAction, player);		// checked
 					
-				// trigger buttons
-                case OuyaButton.LT:		return GetButton(12, buttonAction, player);		// checked
-                case OuyaButton.RT:		return GetButton(13, buttonAction, player);		// checked
+			// trigger buttons
+                	case OuyaButton.LT:	return GetButton(12, buttonAction, player);		// checked
+                	case OuyaButton.RT:	return GetButton(13, buttonAction, player);		// checked
 					
-				// not defined so far – or don't exist on OUYA
-				case OuyaButton.START: return false;
-				case OuyaButton.SYSTEM: return false;
-				case OuyaButton.SELECT: return false;	
-                default: return false;
-                }
-				break;
+			// not defined so far – or don't exist on OUYA
+			case OuyaButton.START: return false;
+			case OuyaButton.SYSTEM: return false;
+			case OuyaButton.SELECT: return false;	
+                	default: return false;
+                	}
+			break;
 #endif
-            case OuyaControllerType.XBox360:
+            	case OuyaControllerType.XBox360:
 #if !UNITY_EDITOR && UNITY_ANDROID
-				// tested with the XBOX360 standard controller connected to the OUYA via USB
-				// hopefully wireless XBOX controllers connected via Bluetooth have the same values
-				// the d-pad has sensitive pressure axis output – however we won't get button events
-				// we need to use continious input scanning for managing Buttonup or ButtonDown events
-				// the same is true for the pressure sensitive axis triggers
-				switch (button)
-				{
-				// OUYA buttons
-            	case OuyaButton.O: 		return GetButton(0, buttonAction, player);		// checked
-            	case OuyaButton.U: 		return GetButton(3, buttonAction, player);		// checked
-            	case OuyaButton.Y: 		return GetButton(4, buttonAction, player);		// checked
-           		case OuyaButton.A: 		return GetButton(1, buttonAction, player);		// checked
+			// tested with the XBOX360 standard controller connected to the OUYA via USB
+			// hopefully wireless XBOX controllers connected via Bluetooth have the same values
+			// the d-pad has sensitive pressure axis output – however we won't get button events
+			// we need to use continious input scanning for managing Buttonup or ButtonDown events
+			// the same is true for the pressure sensitive axis triggers
+			switch (button)
+			{
+			// OUYA buttons
+            		case OuyaButton.O: 	return GetButton(0, buttonAction, player);		// checked
+            		case OuyaButton.U: 	return GetButton(3, buttonAction, player);		// checked
+            		case OuyaButton.Y: 	return GetButton(4, buttonAction, player);		// checked
+           		case OuyaButton.A: 	return GetButton(1, buttonAction, player);		// checked
 				
-				// shoulder buttons	
-            	case OuyaButton.LB:		return GetButton(6, buttonAction, player);		// checked
-            	case OuyaButton.RB:		return GetButton(7, buttonAction, player);		// checked
+			// shoulder buttons	
+            		case OuyaButton.LB:	return GetButton(6, buttonAction, player);		// checked
+            		case OuyaButton.RB:	return GetButton(7, buttonAction, player);		// checked
 				
-				// center buttons
-				case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked
-				case OuyaButton.SELECT:	return GetButton(27, buttonAction, player);
+			// center buttons
+			case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked
+			case OuyaButton.SELECT:	return GetButton(27, buttonAction, player);
 					
-				// stick buttons
-            	case OuyaButton.L3: 	return GetButton(13, buttonAction, player);		// checked
-            	case OuyaButton.R3: 	return GetButton(14, buttonAction, player);		// checked
+			// stick buttons
+            		case OuyaButton.L3: 	return GetButton(13, buttonAction, player);		// checked
+            		case OuyaButton.R3: 	return GetButton(14, buttonAction, player);		// checked
 						
-				// d-pad buttons and trigger buttons
-				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
-                case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.LT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
-                case OuyaButton.RT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+			// d-pad buttons and trigger buttons
+			// these buttons are two axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these	
+               		case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+                	case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
 							
-				// not defined so far
-				case OuyaButton.SYSTEM: return false;
-				default: return false;
-                }
+			// not defined so far
+			case OuyaButton.SYSTEM: return false;
+			default: return false;
+                	}
 #else
-                switch (button)
-				// tested with the XBOX360 standard controller connected to a Win64 machine via USB and official driver
-				// hopefully wireless XBOX controllers connected via Bluetooth have the same values
-				// the d-pad has sensitive pressure axis output – however we won't get button events
-				// we need to use continious input scanning for managing Buttonup or ButtonDown events
-				// the same is true for the pressure sensitive axis triggers
-				// this block won't treat the XBOX360 controller running on MacOSX
-				// on MacOSX we use the TattieBogle driver which leads to a different controller type
-				{
-				// OUYA buttons
-				case OuyaButton.O:		return GetButton(0, buttonAction, player);		// checked
-                case OuyaButton.U:		return GetButton(2, buttonAction, player);		// checked
-                case OuyaButton.Y:		return GetButton(3, buttonAction, player);		// checked
-                case OuyaButton.A:		return GetButton(1, buttonAction, player);		// checked
+			// tested with the XBOX360 standard controller connected to a Win64 machine via USB and official driver
+			// hopefully wireless XBOX controllers connected via Bluetooth have the same values
+			// the d-pad has sensitive pressure axis output – however we won't get button events
+			// we need to use continious input scanning for managing Buttonup or ButtonDown events
+			// the same is true for the pressure sensitive axis triggers
+			// this block won't treat the XBOX360 controller running on MacOSX
+			// on MacOSX we use the TattieBogle driver which leads to a different controller type
+			switch (button)
+			{
+			// OUYA buttons
+			case OuyaButton.O:	return GetButton(0, buttonAction, player);		// checked
+                	case OuyaButton.U:	return GetButton(2, buttonAction, player);		// checked
+                	case OuyaButton.Y:	return GetButton(3, buttonAction, player);		// checked
+                	case OuyaButton.A:	return GetButton(1, buttonAction, player);		// checked
 					
-				// shoulder buttons
-                case OuyaButton.LB:		return GetButton(4, buttonAction, player);		// checked
-                case OuyaButton.RB:		return GetButton(5, buttonAction, player);		// checked
+			// shoulder buttons
+               		case OuyaButton.LB:	return GetButton(4, buttonAction, player);		// checked
+                	case OuyaButton.RB:	return GetButton(5, buttonAction, player);		// checked
 					
-				// center buttons	
-				case OuyaButton.START:	return GetButton(7, buttonAction, player);		// checked
-				case OuyaButton.SELECT: return GetButton(6, buttonAction, player);		// checked
+			// center buttons	
+			case OuyaButton.START:	return GetButton(7, buttonAction, player);		// checked
+			case OuyaButton.SELECT: return GetButton(6, buttonAction, player);		// checked
                 
-				// stick buttons
-                case OuyaButton.L3: 	return GetButton(8, buttonAction, player);		// checked
-                case OuyaButton.R3: 	return GetButton(9, buttonAction, player);		// checked
+			// stick buttons
+                	case OuyaButton.L3: 	return GetButton(8, buttonAction, player);		// checked
+                	case OuyaButton.R3: 	return GetButton(9, buttonAction, player);		// checked
 						
-				// d-pad buttons and trigger buttons
-				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
-                case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.LT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
-                case OuyaButton.RT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+			// d-pad buttons and trigger buttons
+			// these buttons are two axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these	
+	                case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+                	case OuyaButton.RT:return GetCachedButtonEvent(button, buttonAction, playerIndex);														
 			
-				//  not defined so far
-				case OuyaButton.SYSTEM: return false;
-                default: return false;
-                }
+			//  not defined so far
+			case OuyaButton.SYSTEM: return false;
+                	default: return false;
+               		}
 #endif
-            	break;
-			case OuyaControllerType.PS3:
+            		break;
+		case OuyaControllerType.PS3:
 #if !UNITY_EDITOR && UNITY_ANDROID 
-				// tested with the PS3 standard controller connected to the OUYA via Bluetooth
-				// pairing was achieved using a temporary USB cable connection to the OUYA
-				// the d-pad uses simple button events – there is no pressure sensitivity here
-				// triggers have both: pressure sentive axis output as well as button events
-				switch (button)
-				{
-               	// stick buttons
-                case OuyaButton.L3: 	return GetButton(1, buttonAction, player);		// checked
-                case OuyaButton.R3: 	return GetButton(2, buttonAction, player);		// checked
+			// tested with the PS3 standard controller connected to the OUYA via Bluetooth
+			// pairing was achieved using a temporary USB cable connection to the OUYA
+			// the d-pad uses simple button events – there is no pressure sensitivity here
+			// triggers have both: pressure sentive axis output as well as button events
+			switch (button)
+			{
+	               	// stick buttons
+                	case OuyaButton.L3: 	return GetButton(1, buttonAction, player);		// checked
+               		case OuyaButton.R3: 	return GetButton(2, buttonAction, player);		// checked
 					
-				// center buttons
-				case OuyaButton.START: 	return GetButton(3, buttonAction, player);		// checked
-				case OuyaButton.SELECT: return GetButton(27, buttonAction, player);		// checked
+			// center buttons
+			case OuyaButton.START: 	return GetButton(3, buttonAction, player);		// checked
+			case OuyaButton.SELECT: return GetButton(27, buttonAction, player);		// checked
 					
-				// d-pad buttons	
-                case OuyaButton.DU:		return GetButton(4, buttonAction, player);		// checked
-				case OuyaButton.DR:		return GetButton(5, buttonAction, player);		// checked
-                case OuyaButton.DD:		return GetButton(6, buttonAction, player);		// checked
-                case OuyaButton.DL:		return GetButton(7, buttonAction, player);		// checked
+			// d-pad buttons	
+                	case OuyaButton.DU:	return GetButton(4, buttonAction, player);		// checked
+			case OuyaButton.DR:	return GetButton(5, buttonAction, player);		// checked
+               		case OuyaButton.DD:	return GetButton(6, buttonAction, player);		// checked
+                	case OuyaButton.DL:	return GetButton(7, buttonAction, player);		// checked
 				
-				// trigger buttons
-                case OuyaButton.LT: 	return GetButton(8, buttonAction, player);		// checked
-                case OuyaButton.RT: 	return GetButton(9, buttonAction, player);		// checked
+			// trigger buttons
+                	case OuyaButton.LT: 	return GetButton(8, buttonAction, player);		// checked
+                	case OuyaButton.RT: 	return GetButton(9, buttonAction, player);		// checked
 					
-				// shoulder buttons
-				case OuyaButton.LB:		return GetButton(10, buttonAction, player);		// checked
-                case OuyaButton.RB:		return GetButton(11, buttonAction, player);		// checked
+			// shoulder buttons
+			case OuyaButton.LB:	return GetButton(10, buttonAction, player);		// checked
+                	case OuyaButton.RB:	return GetButton(11, buttonAction, player);		// checked
 				
-				// OUYA buttons
-				case OuyaButton.O:		return GetButton(14, buttonAction, player);		// checked
-				case OuyaButton.U:		return GetButton(15, buttonAction, player);		// checked
-				case OuyaButton.Y:		return GetButton(12, buttonAction, player);		// checked
-                case OuyaButton.A:		return GetButton(13, buttonAction, player);		// checked
+			// OUYA buttons
+			case OuyaButton.O:	return GetButton(14, buttonAction, player);		// checked
+			case OuyaButton.U:	return GetButton(15, buttonAction, player);		// checked
+			case OuyaButton.Y:	return GetButton(12, buttonAction, player);		// checked
+                	case OuyaButton.A:	return GetButton(13, buttonAction, player);		// checked
 					
-				// not defined do far
-				case OuyaButton.SYSTEM: return false;	
-                default: return false;
-                }
+			// not defined do far
+			case OuyaButton.SYSTEM: return false;	
+                	default: return false;
+                	}
 #elif !UNITY_EDITOR && UNITY_STANDALONE_OSX
-				// tested with the PS3 standard controller connected to the MacOSX via Bluetooth
-				// pairing was achieved using a temporary USB cable connection to the Mac
-				// the d-pad and triggers use simple button events – there is no pressure sensitivity here
-				// this is because the standard Mac connection doesn't show all the features of the controller
-				// we would need a designated 3rd party driver for that
+			// tested with the PS3 standard controller connected to the MacOSX via Bluetooth
+			// pairing was achieved using a temporary USB cable connection to the Mac
+			// the d-pad and triggers use simple button events – there is no pressure sensitivity here
+			// this is because the standard Mac connection doesn't show all the features of the controller
+			// we would need a designated 3rd party driver for that
+			switch (button)
+			{
+               		// stick buttons
+                	case OuyaButton.L3: 	return GetButton(1, buttonAction, player);		// checked
+                	case OuyaButton.R3: 	return GetButton(2, buttonAction, player);		// checked
+					
+			// center buttons
+			case OuyaButton.START: 	return GetButton(3, buttonAction, player);		// checked
+			case OuyaButton.SELECT: return GetButton(0, buttonAction, player);		// checked
+					
+			// d-pad buttons	
+                	case OuyaButton.DU:	return GetButton(4, buttonAction, player);		// checked
+			case OuyaButton.DR:	return GetButton(5, buttonAction, player);		// checked
+               		case OuyaButton.DD:	return GetButton(6, buttonAction, player);		// checked
+                	case OuyaButton.DL:	return GetButton(7, buttonAction, player);		// checked
+				
+			// trigger buttons
+                	case OuyaButton.LT: 	return GetButton(8, buttonAction, player);		// checked
+                	case OuyaButton.RT: 	return GetButton(9, buttonAction, player);		// checked
+					
+			// shoulder buttons
+			case OuyaButton.LB:	return GetButton(10, buttonAction, player);		// checked
+                	case OuyaButton.RB:	return GetButton(11, buttonAction, player);		// checked
+				
+			// OUYA buttons
+			case OuyaButton.O:	return GetButton(14, buttonAction, player);		// checked
+			case OuyaButton.U:	return GetButton(15, buttonAction, player);		// checked
+			case OuyaButton.Y:	return GetButton(12, buttonAction, player);		// checked
+                	case OuyaButton.A:	return GetButton(13, buttonAction, player);		// checked
+					
+			// not defined do far
+			case OuyaButton.SYSTEM: return false;	
+                	default: return false;
+	                }
+#elif !UNITY_EDITOR && UNITY_STANDALONE_WIN
+			// tested with the PS3 standard controller connected to Win7 64 via USB
+			// custom setup was done using the most popular but crappy driver: MotionInJoy
+			// this needs a CUSTOM button mapping setup in the driver tools to work (see documentation)
+			// default sets could not be used as they do not make sense (gyro's and sticks share the same axis)
+			// the d-pad use simple button events – there is no pressure sensitivity here
+			// the triggers provide both: pressure sensitive axis output and button events
+			// READ THE DOCUMENTATION to make this work !!!
+			switch (button)
+			{
+			// OUYA buttons
+			case OuyaButton.O:	return GetButton(2, buttonAction, player);		// checked
+			case OuyaButton.U:	return GetButton(3, buttonAction, player);		// checked
+			case OuyaButton.Y:	return GetButton(0, buttonAction, player);		// checked
+               		case OuyaButton.A:	return GetButton(1, buttonAction, player);		// checked
+					
+			// shoulder buttons
+			case OuyaButton.LB:	return GetButton(4, buttonAction, player);		// checked
+               		case OuyaButton.RB:	return GetButton(5, buttonAction, player);		// checked	
+					
+			// trigger buttons
+                	case OuyaButton.LT: 	return GetButton(6, buttonAction, player);		// checked
+                	case OuyaButton.RT: 	return GetButton(7, buttonAction, player);		// checked
+					
+               		// stick buttons
+                	case OuyaButton.L3: 	return GetButton(8, buttonAction, player);		// checked
+                	case OuyaButton.R3: 	return GetButton(9, buttonAction, player);		// checked
+					
+			// center buttons
+			case OuyaButton.SELECT: return GetButton(10, buttonAction, player);		// checked
+			case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked
+			case OuyaButton.SYSTEM: return GetButton(12, buttonAction, player);		// checked
+					
+			// d-pad buttons	
+                	case OuyaButton.DU:	return GetButton(13, buttonAction, player);		// checked
+			case OuyaButton.DR:	return GetButton(14, buttonAction, player);		// checked
+	                case OuyaButton.DD:	return GetButton(15, buttonAction, player);		// checked
+	                case OuyaButton.DL:	return GetButton(16, buttonAction, player);		// checked
+					
+			// not defined do far
+	                default: return false;
+	                }
+#elif UNITY_EDITOR
+			// the editor receives platform specific inputs which are not covered by the procompile macros
+			// therefore the testing developer will have to set the Editor Working Platform
+			// otherwise this code copies the data of the Windows and MacOSX platforms
+			if (editorWorkPlatform == EditorWorkPlatform.MacOS) {
+				// MacOSX via standard Bluetooth connection
 				switch (button)
 				{
-               	// stick buttons
-                case OuyaButton.L3: 	return GetButton(1, buttonAction, player);		// checked
-                case OuyaButton.R3: 	return GetButton(2, buttonAction, player);		// checked
-					
+		               	// stick buttons
+		                case OuyaButton.L3: 	return GetButton(1, buttonAction, player);		// checked
+		                case OuyaButton.R3: 	return GetButton(2, buttonAction, player);		// checked
+						
 				// center buttons
 				case OuyaButton.START: 	return GetButton(3, buttonAction, player);		// checked
 				case OuyaButton.SELECT: return GetButton(0, buttonAction, player);		// checked
-					
+						
 				// d-pad buttons	
-                case OuyaButton.DU:		return GetButton(4, buttonAction, player);		// checked
-				case OuyaButton.DR:		return GetButton(5, buttonAction, player);		// checked
-                case OuyaButton.DD:		return GetButton(6, buttonAction, player);		// checked
-                case OuyaButton.DL:		return GetButton(7, buttonAction, player);		// checked
-				
+	                	case OuyaButton.DU:	return GetButton(4, buttonAction, player);		// checked
+				case OuyaButton.DR:	return GetButton(5, buttonAction, player);		// checked
+		                case OuyaButton.DD:	return GetButton(6, buttonAction, player);		// checked
+		                case OuyaButton.DL:	return GetButton(7, buttonAction, player);		// checked
+					
 				// trigger buttons
-                case OuyaButton.LT: 	return GetButton(8, buttonAction, player);		// checked
-                case OuyaButton.RT: 	return GetButton(9, buttonAction, player);		// checked
-					
+		                case OuyaButton.LT: 	return GetButton(8, buttonAction, player);		// checked
+		                case OuyaButton.RT: 	return GetButton(9, buttonAction, player);		// checked
+						
 				// shoulder buttons
-				case OuyaButton.LB:		return GetButton(10, buttonAction, player);		// checked
-                case OuyaButton.RB:		return GetButton(11, buttonAction, player);		// checked
-				
-				// OUYA buttons
-				case OuyaButton.O:		return GetButton(14, buttonAction, player);		// checked
-				case OuyaButton.U:		return GetButton(15, buttonAction, player);		// checked
-				case OuyaButton.Y:		return GetButton(12, buttonAction, player);		// checked
-                case OuyaButton.A:		return GetButton(13, buttonAction, player);		// checked
+				case OuyaButton.LB:	return GetButton(10, buttonAction, player);		// checked
+	                	case OuyaButton.RB:	return GetButton(11, buttonAction, player);		// checked
 					
+				// OUYA buttons
+				case OuyaButton.O:	return GetButton(14, buttonAction, player);		// checked
+				case OuyaButton.U:	return GetButton(15, buttonAction, player);		// checked
+				case OuyaButton.Y:	return GetButton(12, buttonAction, player);		// checked
+	                	case OuyaButton.A:	return GetButton(13, buttonAction, player);		// checked
+						
 				// not defined do far
 				case OuyaButton.SYSTEM: return false;	
-                default: return false;
-                }
-#elif !UNITY_EDITOR && UNITY_STANDALONE_WIN
-				// tested with the PS3 standard controller connected to Win7 64 via USB
-				// custom setup was done using the most popular but crappy driver: MotionInJoy
-				// this needs a CUSTOM button mapping setup in the driver tools to work (see documentation)
-				// default sets could not be used as they do not make sense (gyro's and sticks share the same axis)
-				// the d-pad use simple button events – there is no pressure sensitivity here
-				// the triggers provide both: pressure sensitive axis output and button events
-				// READ THE DOCUMENTATION to make this work !!!
+	               		default: return false;
+	                	}
+			} else {
+				// Windows7 via USB and MotionInJoy driver
 				switch (button)
 				{
 				// OUYA buttons
-				case OuyaButton.O:		return GetButton(2, buttonAction, player);		// checked
-				case OuyaButton.U:		return GetButton(3, buttonAction, player);		// checked
-				case OuyaButton.Y:		return GetButton(0, buttonAction, player);		// checked
-                case OuyaButton.A:		return GetButton(1, buttonAction, player);		// checked
-					
+				case OuyaButton.O:	return GetButton(2, buttonAction, player);		// checked
+				case OuyaButton.U:	return GetButton(3, buttonAction, player);		// checked
+				case OuyaButton.Y:	return GetButton(0, buttonAction, player);		// checked
+	                	case OuyaButton.A:	return GetButton(1, buttonAction, player);		// checked
+						
 				// shoulder buttons
-				case OuyaButton.LB:		return GetButton(4, buttonAction, player);		// checked
-                case OuyaButton.RB:		return GetButton(5, buttonAction, player);		// checked	
-					
+				case OuyaButton.LB:	return GetButton(4, buttonAction, player);		// checked
+	                	case OuyaButton.RB:	return GetButton(5, buttonAction, player);		// checked	
+						
 				// trigger buttons
-                case OuyaButton.LT: 	return GetButton(6, buttonAction, player);		// checked
-                case OuyaButton.RT: 	return GetButton(7, buttonAction, player);		// checked
-					
-               	// stick buttons
-                case OuyaButton.L3: 	return GetButton(8, buttonAction, player);		// checked
-                case OuyaButton.R3: 	return GetButton(9, buttonAction, player);		// checked
-					
+	                	case OuyaButton.LT: 	return GetButton(6, buttonAction, player);		// checked
+	                	case OuyaButton.RT: 	return GetButton(7, buttonAction, player);		// checked
+						
+	               		// stick buttons
+	                	case OuyaButton.L3: 	return GetButton(8, buttonAction, player);		// checked
+	                	case OuyaButton.R3: 	return GetButton(9, buttonAction, player);		// checked
+						
 				// center buttons
 				case OuyaButton.SELECT: return GetButton(10, buttonAction, player);		// checked
 				case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked
 				case OuyaButton.SYSTEM: return GetButton(12, buttonAction, player);		// checked
-					
+						
 				// d-pad buttons	
-                case OuyaButton.DU:		return GetButton(13, buttonAction, player);		// checked
-				case OuyaButton.DR:		return GetButton(14, buttonAction, player);		// checked
-                case OuyaButton.DD:		return GetButton(15, buttonAction, player);		// checked
-                case OuyaButton.DL:		return GetButton(16, buttonAction, player);		// checked
-					
-				// not defined do far
-                default: return false;
-                }
-#elif UNITY_EDITOR
-				// the editor receives platform specific inputs which are not covered by the procompile macros
-				// therefore the testing developer will have to set the Editor Working Platform
-				// otherwise this code copies the data of the Windows and MacOSX platforms
-				if (editorWorkPlatform == EditorWorkPlatform.MacOS) {
-					// MacOSX via standard Bluetooth connection
-					switch (button)
-					{
-	               	// stick buttons
-	                case OuyaButton.L3: 	return GetButton(1, buttonAction, player);		// checked
-	                case OuyaButton.R3: 	return GetButton(2, buttonAction, player);		// checked
+	                	case OuyaButton.DU:	return GetButton(13, buttonAction, player);		// checked
+				case OuyaButton.DR:	return GetButton(14, buttonAction, player);		// checked
+	                	case OuyaButton.DD:	return GetButton(15, buttonAction, player);		// checked
+	                	case OuyaButton.DL:	return GetButton(16, buttonAction, player);		// checked
 						
-					// center buttons
-					case OuyaButton.START: 	return GetButton(3, buttonAction, player);		// checked
-					case OuyaButton.SELECT: return GetButton(0, buttonAction, player);		// checked
-						
-					// d-pad buttons	
-	                case OuyaButton.DU:		return GetButton(4, buttonAction, player);		// checked
-					case OuyaButton.DR:		return GetButton(5, buttonAction, player);		// checked
-	                case OuyaButton.DD:		return GetButton(6, buttonAction, player);		// checked
-	                case OuyaButton.DL:		return GetButton(7, buttonAction, player);		// checked
-					
-					// trigger buttons
-	                case OuyaButton.LT: 	return GetButton(8, buttonAction, player);		// checked
-	                case OuyaButton.RT: 	return GetButton(9, buttonAction, player);		// checked
-						
-					// shoulder buttons
-					case OuyaButton.LB:		return GetButton(10, buttonAction, player);		// checked
-	                case OuyaButton.RB:		return GetButton(11, buttonAction, player);		// checked
-					
-					// OUYA buttons
-					case OuyaButton.O:		return GetButton(14, buttonAction, player);		// checked
-					case OuyaButton.U:		return GetButton(15, buttonAction, player);		// checked
-					case OuyaButton.Y:		return GetButton(12, buttonAction, player);		// checked
-	                case OuyaButton.A:		return GetButton(13, buttonAction, player);		// checked
-						
-					// not defined do far
-					case OuyaButton.SYSTEM: return false;	
-	                default: return false;
-	                }
-				} else {
-					// Windows7 via USB and MotionInJoy driver
-					switch (button)
-					{
-					// OUYA buttons
-					case OuyaButton.O:		return GetButton(2, buttonAction, player);		// checked
-					case OuyaButton.U:		return GetButton(3, buttonAction, player);		// checked
-					case OuyaButton.Y:		return GetButton(0, buttonAction, player);		// checked
-	                case OuyaButton.A:		return GetButton(1, buttonAction, player);		// checked
-						
-					// shoulder buttons
-					case OuyaButton.LB:		return GetButton(4, buttonAction, player);		// checked
-	                case OuyaButton.RB:		return GetButton(5, buttonAction, player);		// checked	
-						
-					// trigger buttons
-	                case OuyaButton.LT: 	return GetButton(6, buttonAction, player);		// checked
-	                case OuyaButton.RT: 	return GetButton(7, buttonAction, player);		// checked
-						
-	               	// stick buttons
-	                case OuyaButton.L3: 	return GetButton(8, buttonAction, player);		// checked
-	                case OuyaButton.R3: 	return GetButton(9, buttonAction, player);		// checked
-						
-					// center buttons
-					case OuyaButton.SELECT: return GetButton(10, buttonAction, player);		// checked
-					case OuyaButton.START: 	return GetButton(11, buttonAction, player);		// checked
-					case OuyaButton.SYSTEM: return GetButton(12, buttonAction, player);		// checked
-						
-					// d-pad buttons	
-	                case OuyaButton.DU:		return GetButton(13, buttonAction, player);		// checked
-					case OuyaButton.DR:		return GetButton(14, buttonAction, player);		// checked
-	                case OuyaButton.DD:		return GetButton(15, buttonAction, player);		// checked
-	                case OuyaButton.DL:		return GetButton(16, buttonAction, player);		// checked
-						
-	                default: return false;
-					}
+	                	default: return false;
 				}
+			}
 #endif
-				break;
+			break;
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX
-			case OuyaControllerType.TattieBogle:
-				// this is for the XBOX360 standard controller running on MacOSX using the TattieBogle driver
-				// hopefully wireless XBOX controllers connected via Bluetooth have the same values
-				// the d-pad has no pressure sensitivity but gives us button events
-				// triggers provide only pressure sensitive axis output therefore
-				// we need to use continious input scanning for managing Buttonup or ButtonDown events
-                switch (button)
-				{
-				// shoulder buttons
-                case OuyaButton.LB: 		return GetButton(13, buttonAction, player);		// checked
-                case OuyaButton.RB: 		return GetButton(14, buttonAction, player);		// checked
+		case OuyaControllerType.TattieBogle:
+			// this is for the XBOX360 standard controller running on MacOSX using the TattieBogle driver
+			// hopefully wireless XBOX controllers connected via Bluetooth have the same values
+			// the d-pad has no pressure sensitivity but gives us button events
+			// triggers provide only pressure sensitive axis output therefore
+			// we need to use continious input scanning for managing Buttonup or ButtonDown events
+               		switch (button)
+			{
+			// shoulder buttons
+	                case OuyaButton.LB: 	return GetButton(13, buttonAction, player);		// checked
+	                case OuyaButton.RB: 	return GetButton(14, buttonAction, player);		// checked
+						
+			// OUYA buttons
+	                case OuyaButton.O: 	return GetButton(16, buttonAction, player);		// checked
+	                case OuyaButton.U:	return GetButton(18, buttonAction, player);		// checked
+	                case OuyaButton.Y: 	return GetButton(19, buttonAction, player);		// checked
+	                case OuyaButton.A: 	return GetButton(17, buttonAction, player);		// checked
+				
+			// stick buttons
+	                case OuyaButton.L3:	return GetButton(11, buttonAction, player);		// checked
+	                case OuyaButton.R3:	return GetButton(12, buttonAction, player);		// checked
 					
-				// OUYA buttons
-                case OuyaButton.O: 			return GetButton(16, buttonAction, player);		// checked
-                case OuyaButton.U:			return GetButton(18, buttonAction, player);		// checked
-                case OuyaButton.Y: 			return GetButton(19, buttonAction, player);		// checked
-                case OuyaButton.A: 			return GetButton(17, buttonAction, player);		// checked
-				
-				// stick buttons
-                case OuyaButton.L3:			return GetButton(11, buttonAction, player);		// checked
-                case OuyaButton.R3:			return GetButton(12, buttonAction, player);		// checked
-				
-				// center buttons
-				case OuyaButton.SELECT:		return GetButton(10, buttonAction, player);		// checked
-                case OuyaButton.START:		return GetButton(9, buttonAction, player);		// checked
-                case OuyaButton.SYSTEM:		return GetButton(15, buttonAction, player);		// checked
+			// center buttons
+			case OuyaButton.SELECT:	return GetButton(10, buttonAction, player);		// checked
+	                case OuyaButton.START:	return GetButton(9, buttonAction, player);		// checked
+	                case OuyaButton.SYSTEM:	return GetButton(15, buttonAction, player);		// checked
                	
-				// d-pad buttons
-				case OuyaButton.DU:			return GetButton(5, buttonAction, player);		// checked
-                case OuyaButton.DD:			return GetButton(6, buttonAction, player);		// checked
-                case OuyaButton.DL:			return GetButton(7, buttonAction, player);		// checked
-                case OuyaButton.DR:			return GetButton(8, buttonAction, player);		// checked
+			// d-pad buttons
+			case OuyaButton.DU:	return GetButton(5, buttonAction, player);		// checked
+                	case OuyaButton.DD:	return GetButton(6, buttonAction, player);		// checked
+                	case OuyaButton.DL:	return GetButton(7, buttonAction, player);		// checked
+                	case OuyaButton.DR:	return GetButton(8, buttonAction, player);		// checked
 					
-				// trigger buttons
-				// the triggers are axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these
-                case OuyaButton.LT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);	
-                case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                default: return false;
-                }
+			// trigger buttons
+			// the triggers are axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these
+                	case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);	
+                	case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	default: return false;
+                	}
 				break;
 #endif
        		case OuyaControllerType.Unknown:
 #if !UNITY_EDITOR && UNITY_ANDROID
-				// we hope to catch any unkown bluetooth controllers on Android here (wild card)
-				// there can't be any testing for that as it's just a random try
-				switch (button)
-				{
-				// ouya buttons
-                case OuyaButton.O:		return GetButton(0, buttonAction, player);
-                case OuyaButton.U:		return GetButton(3, buttonAction, player);
-                case OuyaButton.Y:		return GetButton(4, buttonAction, player);
-                case OuyaButton.A:		return GetButton(1, buttonAction, player);
+			// we hope to catch any unkown bluetooth controllers on Android here (wild card)
+			// there can't be any testing for that as it's just a random try
+			switch (button)
+			{
+			// ouya buttons
+                	case OuyaButton.O:	return GetButton(0, buttonAction, player);
+               		case OuyaButton.U:	return GetButton(3, buttonAction, player);
+               		case OuyaButton.Y:	return GetButton(4, buttonAction, player);
+               		case OuyaButton.A:	return GetButton(1, buttonAction, player);
 					
-				// shoulder buttons
-                case OuyaButton.LB:		return GetButton(6, buttonAction, player);
-                case OuyaButton.RB:		return GetButton(7, buttonAction, player);
+			// shoulder buttons
+                	case OuyaButton.LB:	return GetButton(6, buttonAction, player);
+                	case OuyaButton.RB:	return GetButton(7, buttonAction, player);
 					
-				// stick buttons
-                case OuyaButton.L3:		return GetButton(13, buttonAction, player);
-                case OuyaButton.R3:		return GetButton(14, buttonAction, player);
+			// stick buttons
+                	case OuyaButton.L3:	return GetButton(13, buttonAction, player);
+                	case OuyaButton.R3:	return GetButton(14, buttonAction, player);
 					
-				// d-pad buttons and trigger buttons
-				// tese buttons are axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
-                case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
-                case OuyaButton.LT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
-                case OuyaButton.RT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+			// d-pad buttons and trigger buttons
+			// tese buttons are axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these	
+                	case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.DR: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+                	case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+                	case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
 				
-				// not defined so far
-                default: return false;
-                }
+			// not defined so far
+                	default: return false;
+               		}
 #endif
-				break;
+			break;
 			}
 		}
 		/* SECURITY FALL THROUGH RETURN */ 
-        return false;
-    }
+        	return false;
+    	}
 	
 	private static bool GetCachedButtonEvent(OuyaButton button, ButtonAction buttonAction, int playerIndex) {
 		/* this allows to retreive button events discovered by continious scanning
@@ -1414,48 +1416,48 @@ public static class OuyaInput
 		// d-pad buttons
 		// some d-pad buttons are two axis and do not give out UP or DOWN events natively
 		// we use button state management and continious scanning to provide these
-        case OuyaButton.DU:
+        	case OuyaButton.DU:
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventDU;
 			case ButtonAction.UpFrame: return playerControllers[playerIndex].upEventDU;
 			default: return GetAxis(OuyaAxis.DY, player) > 0f;
 			}
-        case OuyaButton.DD:
+        	case OuyaButton.DD:
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventDD;
 			case ButtonAction.UpFrame: return playerControllers[playerIndex].upEventDD;
 			default: return GetAxis(OuyaAxis.DY, player) < 0f;
 			}
-        case OuyaButton.DL:
+        	case OuyaButton.DL:
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventDL;
 			case ButtonAction.UpFrame: return playerControllers[playerIndex].upEventDL;
 			default: return GetAxis(OuyaAxis.DX, player) < 0f;
 			}
-        case OuyaButton.DR:
+        	case OuyaButton.DR:
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventDR;
 			case ButtonAction.UpFrame: return playerControllers[playerIndex].upEventDR;
 			default: return GetAxis(OuyaAxis.DX, player) > 0f;		
 			}
-		// trigger buttons
-		// some triggers are axis and do not give out UP or DOWN events natively
-		// we use button state management and continious scanning to provide these
-        case OuyaButton.LT:															
+			// trigger buttons
+			// some triggers are axis and do not give out UP or DOWN events natively
+			// we use button state management and continious scanning to provide these
+        	case OuyaButton.LT:															
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventLT;
 			case ButtonAction.UpFrame: return playerControllers[playerIndex].upEventLT;
 			default: return GetAxis(OuyaAxis.LT, player) > triggerThreshold;	
 			}
-        case OuyaButton.RT:															
+        	case OuyaButton.RT:															
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventRT;
 			case ButtonAction.UpFrame: return playerControllers[playerIndex].upEventRT;
 			default: return GetAxis(OuyaAxis.RT, player) > triggerThreshold;	
 			}
-			// not defined so far
-        default: return false;
-        }
+		// not defined so far
+        	default: return false;
+        	}
 	}
 	
 	private static bool GetButton(int buttonNum, ButtonAction action, OuyaPlayer player) {
@@ -1471,7 +1473,7 @@ public static class OuyaInput
 		case ButtonAction.UpFrame: return Input.GetKeyUp((KeyCode)key);
 		default: return Input.GetKey((KeyCode)key);
 		}    
-    }
+    	}
 	
 	private static int GetOuyaKeyCode(int buttonNum, OuyaPlayer player) {
 		/* calculates the OuyKeyCodefor a given player and button number
