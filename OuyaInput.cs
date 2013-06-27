@@ -23,6 +23,8 @@ public enum OuyaControllerType {Broadcom, GameStick, MogaPro, Ouya, PS3, XBox360
 public enum EditorWorkPlatform {MacOS, Windows}
 // defining deadzone types
 public enum DeadzoneType {AxialClip, CircularClip, CircularMap}
+// defining angular quadrants of joystick input
+public enum Quadrant {I, II, III, IV, OnXPos, OnXNeg, OnYPos, OnYNeg, Zero}
 
 public static class OuyaInput
 {
@@ -347,7 +349,7 @@ public static class OuyaInput
 		 * this should be called at Start() and in Update()
 		 */
 		// we only do a joystick plug check every 3 seconds
-        if ((Time.time - lastPlugCheckTime) > 3f) {
+        if ((Time.time - lastPlugCheckTime) > plugCheckInterval) {
 			// store the time of the current plug check
             lastPlugCheckTime = Time.time;
 			
@@ -1560,6 +1562,17 @@ public static class OuyaInput
 		}
 	}
 	
+	public static float GetJoystickAngle(OuyaJoystick joystick, OuyaPlayer player) {
+		/* returns the angle of a joystick
+		 * This is a convenience method allowing to get the joystick input and
+		 * calculate the angle at the same call
+		 * angles start at the positive joystick-x-axis and then increase conterclockwise
+		 * (x-positive-axis is 0° / y-positive axis is 90° / x-negative axis is 180° / y-negative-axis is 270°)
+		 * no joystrick input leads to return of -1 (as 0 is a real value used for the x-positive input)
+		 */
+		return CalculateJoystickAngle(GetJoystick(joystick, player));
+	}
+	
 	public static float GetTrigger(OuyaTrigger trigger, OuyaPlayer player) {
 		/* returns the trigger axis value after clipping by trigger deadzone
 		 * this is needed if the "Dead" value in the Input Manager Settings were set to 0
@@ -1644,6 +1657,56 @@ public static class OuyaInput
 		stickInput *= (inputMagnitude - deadRadius) / ((1f - deadRadius) * inputMagnitude);
 		}
 		return stickInput;
+	}
+	#endregion
+	
+	#region UTILITY HELPERS
+	
+	/* -----------------------------------------------------------------------------------
+	 * UTILITY HELPERS
+	 */
+	
+	public static float CalculateJoystickAngle(Vector2 joystickInput) {
+		/* returns the angle of the called joystick
+		 * angles start at the positive joystick-x-axis and then increase conterclockwise
+		 * (x-positive-axis is 0° / y-positive axis is 90° / x-negative axis is 180° / y-negative-axis is 270°)
+		 * no joystrick input leads to return of -1 (as 0 is a real value used for the x-positive input)
+		 */
+		// check the quadrant our joystick is in
+		// we need that to do the correct ploar conversion math
+		Quadrant quad = Quadrant.I;
+		if (joystickInput.x < 0 && joystickInput.y > 0) quad = Quadrant.II;
+		else if (joystickInput.x < 0 && joystickInput.y < 0) quad = Quadrant.III;
+		else if (joystickInput.x > 0 && joystickInput.y < 0) quad = Quadrant.IV;
+		else if (joystickInput.x == 0 && joystickInput.y > 0) quad = Quadrant.OnYPos;
+		else if (joystickInput.x > 0 && joystickInput.y == 0) quad = Quadrant.OnXPos;
+		else if (joystickInput.x == 0 && joystickInput.y < 0) quad = Quadrant.OnYNeg;
+		else if (joystickInput.x < 0 && joystickInput.y == 0) quad = Quadrant.OnXNeg;
+		else if (joystickInput.x == 0 && joystickInput.y == 0) quad = Quadrant.Zero;
+		
+		// now we can do the poloar conversion according to quadrant cases
+		float angle = 0f;
+		switch (quad) {
+		case Quadrant.I:
+			angle = Mathf.Atan2(joystickInput.y, joystickInput.x) * (180f / Mathf.PI); break;
+		case Quadrant.II:
+			angle = Mathf.Atan2(joystickInput.y, joystickInput.x) * (180f / Mathf.PI); break;
+		case Quadrant.III:
+			angle = (Mathf.Atan2(joystickInput.y, joystickInput.x) * (180f / Mathf.PI)) + 360; break;
+		case Quadrant.IV:
+			angle = (Mathf.Atan2(joystickInput.y, joystickInput.x) * (180f / Mathf.PI)) + 360; break;
+		case Quadrant.OnXPos:
+			angle = 0f; break;
+		case Quadrant.OnXNeg:
+			angle = 180f; break;
+		case Quadrant.OnYPos:
+			angle = 90f; break;
+		case Quadrant.OnYNeg:
+			angle = 270f; break;
+		case Quadrant.Zero:
+			angle = -1f; break;
+		}
+		return angle;
 	}
 	#endregion
 }
