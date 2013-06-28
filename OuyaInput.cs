@@ -196,6 +196,7 @@ public static class OuyaInput
 			}
 			// we check if the controller we have need range mapping
 			switch (controllerType) {
+			case OuyaControllerType.Ouya:
 			case OuyaControllerType.TattieBogle:
 				// remap values from range -1to1 onto range 0to1
 				switch (triggerAxis) {
@@ -538,8 +539,9 @@ public static class OuyaInput
 				playerController.map_LT = null; playerController.invert_LT = false;
                 playerController.map_RT = null; playerController.invert_RT = false;
                 break;
-
+#endif
             case OuyaControllerType.Ouya:
+#if !UNITY_EDITOR && UNITY_ANDROID
                 playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
                 playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
                 playerController.map_RX = string.Format("Joy{0} Axis 3", player); playerController.invert_RX = false;		// checked
@@ -549,8 +551,18 @@ public static class OuyaInput
                 // the dpad is not analog and therefore not mapped as an axis		
 				playerController.map_DX = null; playerController.invert_DX = false;
 				playerController.map_DY = null; playerController.invert_DY = false;	
-				break;
+#else
+			    playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
+                playerController.map_LY = string.Format("Joy{0} Axis 2", player); playerController.invert_LY = true;		// checked
+                playerController.map_RX = string.Format("Joy{0} Axis 4", player); playerController.invert_RX = false;		// checked
+                playerController.map_RY = string.Format("Joy{0} Axis 5", player); playerController.invert_RY = true;		// checked
+                playerController.map_LT = string.Format("Joy{0} Axis 3", player); playerController.invert_LT = false;		// checked
+                playerController.map_RT = string.Format("Joy{0} Axis 6", player); playerController.invert_RT = false;		// checked
+                // the dpad is not analog and therefore not mapped as an axis		
+				playerController.map_DX = null; playerController.invert_DX = false;
+				playerController.map_DY = null; playerController.invert_DY = false;	
 #endif
+				break;
 			case OuyaControllerType.XBox360:
 #if !UNITY_EDITOR && UNITY_ANDROID 
 				playerController.map_LX = string.Format("Joy{0} Axis 1", player); playerController.invert_LX = false;		// checked
@@ -759,12 +771,10 @@ public static class OuyaInput
 				if (axisName == null)
 				{
 					switch (controllerType) {
-#if !UNITY_EDITOR && UNITY_ANDROID
 					case OuyaControllerType.Ouya:
 						if (GetButton(10, ButtonAction.Pressed, player)) return -1f;
 						else if (GetButton(11, ButtonAction.Pressed, player)) return 1f;
 						break;
-#endif
 					case OuyaControllerType.PS3:
 #if !UNITY_EDITOR && UNITY_ANDROID
 						if (GetButton(7, ButtonAction.Pressed, player)) return -1f;
@@ -803,12 +813,10 @@ public static class OuyaInput
 				if (axisName == null)
 				{
 					switch (controllerType) {					
-#if !UNITY_EDITOR && UNITY_ANDROID
 					case OuyaControllerType.Ouya:
 						if (GetButton(8, ButtonAction.Pressed, player)) return 1f;
 						else if (GetButton(9, ButtonAction.Pressed, player)) return -1f;
 						break;
-#endif
 					case OuyaControllerType.PS3:
 #if !UNITY_EDITOR && UNITY_ANDROID
 						if (GetButton(6, ButtonAction.Pressed, player)) return -1f;
@@ -956,7 +964,6 @@ public static class OuyaInput
 				case OuyaButton.SYSTEM:	return false;	
                 default: return false;
                 }
-				break;
 
 			case OuyaControllerType.GameStick:
 				// tested on the real GameStick DevKit
@@ -1000,11 +1007,10 @@ public static class OuyaInput
                 case OuyaButton.SYSTEM: return false;
 				default: return false;
                 }
-            	break;
-
-			case OuyaControllerType.Ouya:
+#endif
+			case OuyaControllerType.Ouya:	
+#if !UNITY_EDITOR && UNITY_ANDROID
 				// tested on the real Ouya Developers Console
-				// never succeded in pairing the controller with the Mac / Windows
 				// the d-pad has no pressure sensitive output although the hardware looks like it
 				// triggers have both: pressure sensitive axis and button event output (nice)
 				switch (button)
@@ -1039,7 +1045,48 @@ public static class OuyaInput
 				case OuyaButton.SELECT: return false;	
                 default: return false;
                 }
-				break;
+#else
+				// tested on Windows8 64bit (standalone player) – pairing via OS Bluetooth driver
+				// the d-pad has no pressure sensitive output although the hardware looks like it
+				// triggers have both: pressure sensitive axis and button event output
+				// however trigger buttons only react on full pullthrough
+				// therefore we prefer to use axis conversion
+				switch (button)
+				{
+				// shoulder buttons
+                case OuyaButton.LB: 	return GetButton(4, buttonAction, player);		// checked
+                case OuyaButton.RB: 	return GetButton(5, buttonAction, player);		// checked
+					
+				// OUYA buttons	
+                case OuyaButton.O:		return GetButton(0, buttonAction, player);		// checked
+                case OuyaButton.U:		return GetButton(1, buttonAction, player);		// checked
+                case OuyaButton.Y:		return GetButton(2, buttonAction, player);		// checked
+                case OuyaButton.A:		return GetButton(3, buttonAction, player);		// checked
+					
+				// stick buttons
+                case OuyaButton.L3:		return GetButton(6, buttonAction, player);		// checked
+                case OuyaButton.R3:		return GetButton(7, buttonAction, player);		// checked
+					
+				// d-pad buttons
+                case OuyaButton.DU:		return GetButton(8, buttonAction, player);		// checked
+                case OuyaButton.DD:		return GetButton(9, buttonAction, player);		// checked
+                case OuyaButton.DL:		return GetButton(10, buttonAction, player);		// checked
+                case OuyaButton.DR:		return GetButton(11, buttonAction, player);		// checked
+					
+				// trigger buttons
+				// although button states are natively supported we use axis conversion
+				// this is because trigger buttons will natively only react on full pullthrough
+				// these buttons then are two axis and do not give out UP or DOWN events natively
+				// we use button state management and continious scanning to provide these	
+				case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
+                case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);
+					
+				// not defined so far – or don't exist on OUYA
+				case OuyaButton.START: return false;
+				case OuyaButton.SYSTEM: return false;
+				case OuyaButton.SELECT: return false;	
+                default: return false;
+                }			
 #endif
             case OuyaControllerType.XBox360:
 #if !UNITY_EDITOR && UNITY_ANDROID
