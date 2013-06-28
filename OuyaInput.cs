@@ -196,7 +196,9 @@ public static class OuyaInput
 			}
 			// we check if the controller we have need range mapping
 			switch (controllerType) {
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
 			case OuyaControllerType.Ouya:
+#endif
 			case OuyaControllerType.TattieBogle:
 				// remap values from range -1to1 onto range 0to1
 				switch (triggerAxis) {
