@@ -43,8 +43,8 @@ public static class OuyaInput
 	private static DeadzoneType deadzoneType = DeadzoneType.CircularClip;
 	
 	/* TEMPORARY */ 
-	// the time of the last joystick lis update
-	private static float lastPlugCheckTime = 0;
+	// the time of the next joystick lis update
+	private static float nextPlugCheckTime = 0;
 	// a list of all available controller names
 	private static string[] controllerNames = null;
 	// a list of all available controller types derived from names
@@ -352,9 +352,9 @@ public static class OuyaInput
 		 * this should be called at Start() and in Update()
 		 */
 		// we only do a joystick plug check every 3 seconds
-        if ((Time.time - lastPlugCheckTime) > plugCheckInterval) {
-			// store the time of the current plug check
-            lastPlugCheckTime = Time.time;
+        if (Time.time > nextPlugCheckTime) {
+			// store the time of the next plug check
+            nextPlugCheckTime = Time.time + plugCheckInterval;
 			
 			/* GET CONTROLLERS */
 			// get joystick names from Unity
