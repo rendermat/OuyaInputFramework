@@ -80,7 +80,7 @@ function Update()
 	
 	// examples for easy (or precision) joystick input
 	var leftJoystick : Vector2 = OuyaInput.GetJoystick(OuyaJoystick.LeftStick, player);
-	var rightKoystick : Vector2 = OuyaInput.GetJoystick(OuyaJoystick.RightStick, player);
+	var rightJoystick : Vector2 = OuyaInput.GetJoystick(OuyaJoystick.RightStick, player);
 	var dPad : Vector2 = OuyaInput.GetJoystick(OuyaJoystick.DPad, player);
 	
 	// examples for easy (or precision) trigger input
