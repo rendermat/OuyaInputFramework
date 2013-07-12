@@ -11,7 +11,7 @@ public class InputHandlerPattern : MonoBehaviour
 	/* INSPECTOR */ 
 	
 	// do we want to scan for trigger and d-pad button events ?
-	public bool continiousScan = true;
+	public bool continuousScan = true;
 	
 	// the player we want to get input for
 	public OuyaPlayer player = OuyaPlayer.P01;
@@ -37,7 +37,7 @@ public class InputHandlerPattern : MonoBehaviour
 		OuyaInput.SetEditorPlatform(editorWorkPlatform);
 		
 		// OPTIONAL: set button state scanning to receive input state events for trigger and d-pads
-		OuyaInput.SetContiniousScanning(continiousScan);
+		OuyaInput.SetContinuousScanning(continuousScan);
 		
 		// OPTIONAL: define the deadzone if you want to use advanced joystick and trigger access
 		OuyaInput.SetDeadzone(deadzoneType, deadzone);
@@ -115,9 +115,9 @@ public class InputHandlerPattern : MonoBehaviour
 		
 		/* GET DOWN EVENTS FOR CONTROLLER BUTTONS */
 
-		// we need to have OuyaInput.SetContiniousScanning(true) in Start()
+		// we need to have OuyaInput.SetContinuousScanning(true) in Start()
 		// some controllers might work without this but we want to make sure
-		if (continiousScan)
+		if (continuousScan)
 		{
 			// O U Y A buttons
 			bool down_O = OuyaInput.GetButtonDown(OuyaButton.O, player);
@@ -141,9 +141,9 @@ public class InputHandlerPattern : MonoBehaviour
 		
 		/* GET UP (RELEASE) EVENTS FOR CONTROLLER BUTTONS */
 
-		// we need to have OuyaInput.SetContiniousScanning(true) in Start()
+		// we need to have OuyaInput.SetContinuousScanning(true) in Start()
 		// some controllers might work without this but we want to make sure
-		if (continiousScan)
+		if (continuousScan)
 		{
 			// O U Y A buttons
 			bool up_O = OuyaInput.GetButtonUp(OuyaButton.O, player);

@@ -6,7 +6,7 @@
 /* INSPECTOR */ 
 
 // do we want to scan for trigger and d-pad button events ?
-var continiousScan : boolean  = true;
+var continuousScan : boolean  = true;
 	
 // the player we want to get input for
 var player : OuyaPlayer = OuyaPlayer.P01;
@@ -32,7 +32,7 @@ function Start()
 	OuyaInput.SetEditorPlatform(editorWorkPlatform);
 	
 	// OPTIONAL: set button state scanning to receive input state events for trigger and d-pads
-	OuyaInput.SetContiniousScanning(continiousScan);
+	OuyaInput.SetContinuousScanning(continuousScan);
 	
 	// OPTIONAL: define the deadzone if you want to use advanced joystick and trigger access
 	OuyaInput.SetDeadzone(deadzoneType, deadzone);
@@ -110,9 +110,9 @@ function Update()
 	
 	/* GET DOWN EVENTS FOR CONTROLLER BUTTONS */
 
-	// we need to have OuyaInput.SetContiniousScanning(true) in Start()
+	// we need to have OuyaInput.SetContinuousScanning(true) in Start()
 	// some controllers might work without this but we want to make sure
-	if (continiousScan)
+	if (continuousScan)
 	{
 		// O U Y A buttons
 		var down_O : boolean = OuyaInput.GetButtonDown(OuyaButton.O, player);
@@ -136,9 +136,9 @@ function Update()
 	
 	/* GET UP (RELEASE) EVENTS FOR CONTROLLER BUTTONS */
 
-	// we need to have OuyaInput.SetContiniousScanning(true) in Start()
+	// we need to have OuyaInput.SetContinuousScanning(true) in Start()
 	// some controllers might work without this but we want to make sure
-	if (continiousScan)
+	if (continuousScan)
 	{
 		// O U Y A buttons
 		var up_O : boolean = OuyaInput.GetButtonUp(OuyaButton.O, player);
