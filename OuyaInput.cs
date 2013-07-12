@@ -35,7 +35,7 @@ public static class OuyaInput
 	
 	// setting for platform specific djustments
 	private static float plugCheckInterval = 3;
-	private static bool scanContiniously = true;
+	private static bool scanContinuously = true;
 	private static float deadzoneRadius = 0.25f;
 	private static float triggerThreshold = 0.10f;
 	
@@ -304,7 +304,7 @@ public static class OuyaInput
 		}
 		
 		public void resetControllerCache() {
-			/* method to reset all flags we use when scanning continiously for trigger events
+			/* method to reset all flags we use when scanning continuously for trigger events
 			 */
 			downEventLT = false; upEventLT = false; downStateLT = false;
 			downEventRT = false; upEventRT = false; downStateRT = false;
@@ -332,11 +332,11 @@ public static class OuyaInput
 		editorWorkPlatform = workPlatform;
 	}
 	
-	public static void SetContiniousScanning(bool active) {
-		/* allows to activate continious controller scanning
+	public static void SetContinuousScanning(bool active) {
+		/* allows to activate continuous controller scanning
 		 * this is needed to retreive ButtonUp and BottonDown events for triggers and d-pads
 		 */
-		scanContiniously = active;
+		scanContinuously = active;
 	}
 	
 	public static void SetPlugCheckInterval(float seconds) {
@@ -412,9 +412,9 @@ public static class OuyaInput
 				}
 			}
         }
-		/* CONTINIOUS JOYSTICK LIST */
+		/* CONTINUOUS JOYSTICK LIST */
     	// this block is a state manager that allows to get button events for native axes buttons
-		if (scanContiniously && controllerCount > 0)
+		if (scanContinuously && controllerCount > 0)
 		{
 			// scan controllers to gather button down or up events for triggers
 			for (int i = 0; i < controllerCount; i++) {
@@ -952,7 +952,7 @@ public static class OuyaInput
 						
 				// d-pad buttons and trigger buttons
 				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
+				// we use button state management and continuous scanning to provide these	
                 case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
@@ -994,7 +994,7 @@ public static class OuyaInput
 										
 				// d-pad buttons
 				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
+				// we use button state management and continuous scanning to provide these	
                 case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
@@ -1079,7 +1079,7 @@ public static class OuyaInput
 				// although button states are natively supported we use axis conversion
 				// this is because trigger buttons will natively only react on full pullthrough
 				// these buttons then are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
+				// we use button state management and continuous scanning to provide these	
 				case OuyaButton.LT: return GetCachedButtonEvent(button, buttonAction, playerIndex);														
                 case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);
 					
@@ -1095,7 +1095,7 @@ public static class OuyaInput
 				// tested with the XBOX360 standard controller connected to the OUYA via USB
 				// hopefully wireless XBOX controllers connected via Bluetooth have the same values
 				// the d-pad has sensitive pressure axis output – however we won't get button events
-				// we need to use continious input scanning for managing Buttonup or ButtonDown events
+				// we need to use continuous input scanning for managing Buttonup or ButtonDown events
 				// the same is true for the pressure sensitive axis triggers
 				switch (button)
 				{
@@ -1119,7 +1119,7 @@ public static class OuyaInput
 						
 				// d-pad buttons and trigger buttons
 				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
+				// we use button state management and continuous scanning to provide these	
                 case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
@@ -1136,7 +1136,7 @@ public static class OuyaInput
 				// tested with the XBOX360 standard controller connected to a Win64 machine via USB and official driver
 				// hopefully wireless XBOX controllers connected via Bluetooth have the same values
 				// the d-pad has sensitive pressure axis output – however we won't get button events
-				// we need to use continious input scanning for managing Buttonup or ButtonDown events
+				// we need to use continuous input scanning for managing Buttonup or ButtonDown events
 				// the same is true for the pressure sensitive axis triggers
 				// this block won't treat the XBOX360 controller running on MacOSX
 				// on MacOSX we use the TattieBogle driver which leads to a different controller type
@@ -1161,7 +1161,7 @@ public static class OuyaInput
 						
 				// d-pad buttons and trigger buttons
 				// these buttons are two axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
+				// we use button state management and continuous scanning to provide these	
                 case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
@@ -1379,7 +1379,7 @@ public static class OuyaInput
 				// hopefully wireless XBOX controllers connected via Bluetooth have the same values
 				// the d-pad has no pressure sensitivity but gives us button events
 				// triggers provide only pressure sensitive axis output therefore
-				// we need to use continious input scanning for managing Buttonup or ButtonDown events
+				// we need to use continuous input scanning for managing Buttonup or ButtonDown events
                 switch (button)
 				{
 				// shoulder buttons
@@ -1409,7 +1409,7 @@ public static class OuyaInput
 					
 				// trigger buttons
 				// the triggers are axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these
+				// we use button state management and continuous scanning to provide these
                 case OuyaButton.LT:	return GetCachedButtonEvent(button, buttonAction, playerIndex);	
                 case OuyaButton.RT: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 default: return false;
@@ -1437,7 +1437,7 @@ public static class OuyaInput
 					
 				// d-pad buttons and trigger buttons
 				// tese buttons are axis and do not give out UP or DOWN events natively
-				// we use button state management and continious scanning to provide these	
+				// we use button state management and continuous scanning to provide these	
                 case OuyaButton.DU: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DD: return GetCachedButtonEvent(button, buttonAction, playerIndex);
                 case OuyaButton.DL: return GetCachedButtonEvent(button, buttonAction, playerIndex);
@@ -1457,8 +1457,8 @@ public static class OuyaInput
     }
 	
 	private static bool GetCachedButtonEvent(OuyaButton button, ButtonAction buttonAction, int playerIndex) {
-		/* this allows to retreive button events discovered by continious scanning
-		 * this will sreturn false for ButtonUp and ButtonDown if continioussScanning is not activated
+		/* this allows to retreive button events discovered by continuous scanning
+		 * this will return false for ButtonUp and ButtonDown if continuousScanning is not activated
 		 */
 		// get the correct player from the index
 		OuyaPlayer player = (OuyaPlayer)(playerIndex + 1);
@@ -1466,7 +1466,7 @@ public static class OuyaInput
 		switch (button) {
 		// d-pad buttons
 		// some d-pad buttons are two axis and do not give out UP or DOWN events natively
-		// we use button state management and continious scanning to provide these
+		// we use button state management and continuous scanning to provide these
         case OuyaButton.DU:
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventDU;
@@ -1493,7 +1493,7 @@ public static class OuyaInput
 			}
 		// trigger buttons
 		// some triggers are axis and do not give out UP or DOWN events natively
-		// we use button state management and continious scanning to provide these
+		// we use button state management and continuous scanning to provide these
         case OuyaButton.LT:															
 			switch (buttonAction) {
 			case ButtonAction.DownFrame: return playerControllers[playerIndex].downEventLT;
