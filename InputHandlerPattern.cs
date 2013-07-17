@@ -97,7 +97,7 @@ public class InputHandlerPattern : MonoBehaviour
 		
 		// examples for easy (or precision) joystick input
 		Vector2 leftJoystick = OuyaInput.GetJoystick(OuyaJoystick.LeftStick, player);
-		Vector2 rightKoystick = OuyaInput.GetJoystick(OuyaJoystick.RightStick, player);
+		Vector2 rightJoystick = OuyaInput.GetJoystick(OuyaJoystick.RightStick, player);
 		Vector2 dPad = OuyaInput.GetJoystick(OuyaJoystick.DPad, player);
 		
 		// examples for easy (or precision) trigger input
