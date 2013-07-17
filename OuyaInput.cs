@@ -41,7 +41,7 @@ public enum OuyaMapType {
 	Generic_ANDROID, Broadcom_ANDROID, MogaPro_ANDROID,
 	PS3_ANDROID, XBOX360_ANDROID_wireless, XBOX360_ANDROID,
 	Ouya_WIN, GameStick_WIN, PS3_WIN, XBox360_WIN, MotionInJoy_WIN,
-	GameStick_OSX, PS3_OSX, TattieBogle_OSX, Afterglow_OSX,
+	GameStick_OSX, PS3_OSX, TattieBogle_OSX,
 	Unknown, None}
 // defining deadzone types
 public enum DeadzoneType {AxialClip, CircularClip, CircularMap}
