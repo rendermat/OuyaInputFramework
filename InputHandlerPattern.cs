@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2013 GoldenTricycle, GBR.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Version 0.07 */
+
 using UnityEngine;
 using System.Collections;
 
@@ -11,13 +29,10 @@ public class InputHandlerPattern : MonoBehaviour
 	/* INSPECTOR */ 
 	
 	// do we want to scan for trigger and d-pad button events ?
-	public bool continiousScan = true;
+	public bool continuousScan = true;
 	
 	// the player we want to get input for
 	public OuyaPlayer player = OuyaPlayer.P01;
-	
-	// the platform we are working on (installation editor)
-	public EditorWorkPlatform editorWorkPlatform = EditorWorkPlatform.MacOS;
 	
 	// the type of deadzone we want to use for convenience access
 	public DeadzoneType deadzoneType = DeadzoneType.CircularClip;
@@ -33,15 +48,12 @@ public class InputHandlerPattern : MonoBehaviour
 	
 	public void Start()
 	{
-		// set the editor platform to get correct input while testing in the editor
-		OuyaInput.SetEditorPlatform(editorWorkPlatform);
-		
 		// OPTIONAL: set button state scanning to receive input state events for trigger and d-pads
-		OuyaInput.SetContiniousScanning(continiousScan);
+		OuyaInput.SetContinuousScanning(continuousScan);
 		
 		// OPTIONAL: define the deadzone if you want to use advanced joystick and trigger access
 		OuyaInput.SetDeadzone(deadzoneType, deadzone);
-		OuyaInput.SetTriggerTreshold(triggerTreshold);
+		OuyaInput.SetTriggerThreshold(triggerTreshold);
 		
 		// do one controller update here to get everything started as soon as possible
 		OuyaInput.UpdateControllers();
@@ -108,6 +120,10 @@ public class InputHandlerPattern : MonoBehaviour
 		bool pressed_LeftTrigger = OuyaInput.GetButton(OuyaButton.LT, player);
 		bool pressed_RightTrigger = OuyaInput.GetButton(OuyaButton.RT, player);
 		
+		//shoulder buttons
+		bool pressed_LeftShoulder = OuyaInput.GetButton(OuyaButton.LB, player);
+		bool pressed_RightShoulder = OuyaInput.GetButton(OuyaButton.RB, player);
+		
 		// center buttons
 		bool pressed_Start = OuyaInput.GetButton(OuyaButton.START, player);
 		bool pressed_Select = OuyaInput.GetButton(OuyaButton.SELECT, player);
@@ -115,9 +131,9 @@ public class InputHandlerPattern : MonoBehaviour
 		
 		/* GET DOWN EVENTS FOR CONTROLLER BUTTONS */
 
-		// we need to have OuyaInput.SetContiniousScanning(true) in Start()
+		// we need to have OuyaInput.SetContinuousScanning(true) in Start()
 		// some controllers might work without this but we want to make sure
-		if (continiousScan)
+		if (continuousScan)
 		{
 			// O U Y A buttons
 			bool down_O = OuyaInput.GetButtonDown(OuyaButton.O, player);
@@ -132,6 +148,10 @@ public class InputHandlerPattern : MonoBehaviour
 			// trigger buttons
 			bool down_LeftTrigger = OuyaInput.GetButtonDown(OuyaButton.LT, player);
 			bool down_RightTrigger = OuyaInput.GetButtonDown(OuyaButton.RT, player);
+			
+			//shoulder buttons
+			bool down_LeftShoulder = OuyaInput.GetButtonDown(OuyaButton.LB, player);
+			bool down_RightShoulder = OuyaInput.GetButtonDown(OuyaButton.RB, player);
 		
 			// center buttons
 			bool down_Start = OuyaInput.GetButtonDown(OuyaButton.START, player);
@@ -141,9 +161,9 @@ public class InputHandlerPattern : MonoBehaviour
 		
 		/* GET UP (RELEASE) EVENTS FOR CONTROLLER BUTTONS */
 
-		// we need to have OuyaInput.SetContiniousScanning(true) in Start()
+		// we need to have OuyaInput.SetContinuousScanning(true) in Start()
 		// some controllers might work without this but we want to make sure
-		if (continiousScan)
+		if (continuousScan)
 		{
 			// O U Y A buttons
 			bool up_O = OuyaInput.GetButtonUp(OuyaButton.O, player);
@@ -158,6 +178,10 @@ public class InputHandlerPattern : MonoBehaviour
 			// trigger buttons
 			bool up_LeftTrigger = OuyaInput.GetButtonUp(OuyaButton.LT, player);
 			bool up_RightTrigger = OuyaInput.GetButtonUp(OuyaButton.RT, player);
+			
+			//shoulder buttons
+			bool up_LeftShoulder = OuyaInput.GetButtonUp(OuyaButton.LB, player);
+			bool up_RightShoulder = OuyaInput.GetButtonUp(OuyaButton.RB, player);
 		
 			// center buttons
 			bool up_Start = OuyaInput.GetButtonUp(OuyaButton.START, player);
