@@ -482,7 +482,9 @@ public static class OuyaInput
 			case "PLAYSTATION(R)3 CONTROLLER":
 				controllerTypes[index] = OuyaControllerType.PS3;
 				return OuyaControllerType.PS3;
+			case "MICROSOFT WIRELESS 360 CONTROLLER":	
 			case "":
+			
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX
 				controllerTypes[index] = OuyaControllerType.TattieBogle;
 				return OuyaControllerType.TattieBogle;
