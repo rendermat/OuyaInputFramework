@@ -19,6 +19,8 @@
 using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 219
+
 public class InputHandlerPattern : MonoBehaviour
 {
 	// attach this script to any GameObject
