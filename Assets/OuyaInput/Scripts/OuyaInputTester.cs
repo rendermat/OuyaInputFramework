@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2013 GoldenTricycle, GBR.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Version 0.07 */
+
 using UnityEngine;
 using System.Collections;
 
@@ -16,20 +34,17 @@ public class OuyaInputTester : MonoBehaviour
 	public bool debug = true;
 	
 	// do we want to scan for trigger and d-pad button events ?
-	public bool continiousScan = true;
+	public bool continuousScan = true;
 	
 	// the player we want to observe
 	public OuyaPlayer observedPlayer = OuyaPlayer.P01;
-	
-	// the platform we are working on (installation editor)
-	public EditorWorkPlatform editorWorkPlatform = EditorWorkPlatform.MacOS;
 	
 	// the type of deadzone we want to use for convenience access
 	public DeadzoneType deadzoneType = DeadzoneType.CircularMap;
 	
 	// the size of the deadzone
 	public float deadzone = 0.25f;
-	public float triggerTreshold = 0.1f;
+	public float triggerThreshold = 0.1f;
 	
 	
 	/* -----------------------------------------------------------------------------------
@@ -38,15 +53,12 @@ public class OuyaInputTester : MonoBehaviour
 	
 	public void Start()
 	{
-		// set the editor platform to get correct input while testing in the editor
-		OuyaInput.SetEditorPlatform(editorWorkPlatform);
-		
 		// set button state scanning to receive input state events for trigger and d-pads
-		OuyaInput.SetContiniousScanning(continiousScan);
+		OuyaInput.SetContinuousScanning(continuousScan);
 		
 		// define the deadzone if you want to use advanced joystick and trigger access
 		OuyaInput.SetDeadzone(deadzoneType, deadzone);
-		OuyaInput.SetTriggerTreshold(triggerTreshold);
+		OuyaInput.SetTriggerThreshold(triggerThreshold);
 		
 		// do one controller update here to get everything started as soon as possible
 		OuyaInput.UpdateControllers();

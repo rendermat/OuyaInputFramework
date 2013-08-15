@@ -1,3 +1,5 @@
+/* Version 0.07 */
+
 // attach this script to any GameObject
 // in most cases this sits on the object that should be controlled via input
 // this pattern example shows how to get every input from a players controller
@@ -11,15 +13,12 @@ var continuousScan : boolean  = true;
 // the player we want to get input for
 var player : OuyaPlayer = OuyaPlayer.P01;
 
-// the platform we are working on (installation editor)
-var editorWorkPlatform : EditorWorkPlatform = EditorWorkPlatform.MacOS;
-
 // the type of deadzone we want to use for convenience access
 var deadzoneType : DeadzoneType = DeadzoneType.CircularClip;
 
 // the size of the deadzone
 var deadzone : float = 0.25f;
-var triggerTreshold : float = 0.2f;
+var triggerThreshold : float = 0.2f;
 
 
 /* -----------------------------------------------------------------------------------
@@ -27,16 +26,13 @@ var triggerTreshold : float = 0.2f;
  */
 
 function Start()
-{
-	// set the editor platform to get correct input while testing in the editor
-	OuyaInput.SetEditorPlatform(editorWorkPlatform);
-	
+{	
 	// OPTIONAL: set button state scanning to receive input state events for trigger and d-pads
 	OuyaInput.SetContinuousScanning(continuousScan);
 	
 	// OPTIONAL: define the deadzone if you want to use advanced joystick and trigger access
 	OuyaInput.SetDeadzone(deadzoneType, deadzone);
-	OuyaInput.SetTriggerTreshold(triggerTreshold);
+	OuyaInput.SetTriggerThreshold(triggerThreshold);
 	
 	// do one controller update here to get everything started as soon as possible
 	OuyaInput.UpdateControllers();
@@ -64,17 +60,17 @@ function Update()
 	var y_Axis_RightStick : float = OuyaInput.GetAxis(OuyaAxis.RY, player);
 	
 	// d-pad
-	var x_Axis_DPad : float= OuyaInput.GetAxis(OuyaAxis.DX, player);
-	var y_Axis_DPad : float= OuyaInput.GetAxis(OuyaAxis.DY, player);
+	var x_Axis_DPad : float = OuyaInput.GetAxis(OuyaAxis.DX, player);
+	var y_Axis_DPad : float = OuyaInput.GetAxis(OuyaAxis.DY, player);
 	
 	// triggers
-	var axis_LeftTrigger : float  = OuyaInput.GetAxis(OuyaAxis.LT, player);
-	var axis_RightTrigger : float= OuyaInput.GetAxis(OuyaAxis.RT, player);
+	var axis_LeftTrigger : float = OuyaInput.GetAxis(OuyaAxis.LT, player);
+	var axis_RightTrigger : float = OuyaInput.GetAxis(OuyaAxis.RT, player);
 	
 	// examples for deadzone clipping (we can choose between three types)
 	var leftStickInput : Vector2 = OuyaInput.CheckDeadzoneCircular(x_Axis_LeftStick, y_Axis_LeftStick, deadzone);
-	var rightStickInput : Vector2= OuyaInput.CheckDeadzoneRescaled(x_Axis_RightStick, y_Axis_RightStick, deadzone);
-	var dPadInput : Vector2= OuyaInput.CheckDeadzoneRescaled(x_Axis_DPad, y_Axis_DPad, deadzone);
+	var rightStickInput : Vector2 = OuyaInput.CheckDeadzoneRescaled(x_Axis_RightStick, y_Axis_RightStick, deadzone);
+	var dPadInput : Vector2 = OuyaInput.CheckDeadzoneRescaled(x_Axis_DPad, y_Axis_DPad, deadzone);
 	
 	/* GET ADVANCED JOYSTICK AND TRIGGER INPUT WITH DEADZONE MAPPING */
 	
@@ -103,6 +99,10 @@ function Update()
 	var pressed_LeftTrigger : boolean = OuyaInput.GetButton(OuyaButton.LT, player);
 	var pressed_RightTrigger : boolean = OuyaInput.GetButton(OuyaButton.RT, player);
 	
+	// shoulder buttons
+	var pressed_LeftShoulder : boolean = OuyaInput.GetButton(OuyaButton.LB, player);
+	var pressed_RightShoulder : boolean = OuyaInput.GetButton(OuyaButton.RB, player);
+	
 	// center buttons
 	var pressed_Start : boolean = OuyaInput.GetButton(OuyaButton.START, player);
 	var pressed_Select : boolean = OuyaInput.GetButton(OuyaButton.SELECT, player);
@@ -117,8 +117,8 @@ function Update()
 		// O U Y A buttons
 		var down_O : boolean = OuyaInput.GetButtonDown(OuyaButton.O, player);
 		var down_U : boolean = OuyaInput.GetButtonDown(OuyaButton.U, player);
-		var down_Y : boolean= OuyaInput.GetButtonDown(OuyaButton.Y, player);
-		var down_A : boolean= OuyaInput.GetButtonDown(OuyaButton.A, player);
+		var down_Y : boolean = OuyaInput.GetButtonDown(OuyaButton.Y, player);
+		var down_A : boolean = OuyaInput.GetButtonDown(OuyaButton.A, player);
 	
 		// joystick click down buttons
 		var down_LeftStick : boolean = OuyaInput.GetButtonDown(OuyaButton.L3, player);
@@ -127,6 +127,10 @@ function Update()
 		// trigger buttons
 		var down_LeftTrigger : boolean = OuyaInput.GetButtonDown(OuyaButton.LT, player);
 		var down_RightTrigger : boolean = OuyaInput.GetButtonDown(OuyaButton.RT, player);
+		
+		// shoulder buttons
+		var down_LeftShoulder : boolean = OuyaInput.GetButtonDown(OuyaButton.LB, player);
+		var down_RightShoulder : boolean = OuyaInput.GetButtonDown(OuyaButton.RB, player);
 	
 		// center buttons
 		var down_Start : boolean = OuyaInput.GetButtonDown(OuyaButton.START, player);
@@ -154,9 +158,13 @@ function Update()
 		var up_LeftTrigger : boolean = OuyaInput.GetButtonUp(OuyaButton.LT, player);
 		var up_RightTrigger : boolean = OuyaInput.GetButtonUp(OuyaButton.RT, player);
 	
+		// shoulder buttons
+		var up_LeftShoulder : boolean = OuyaInput.GetButtonUp(OuyaButton.LB, player);
+		var up_RightShoulder : boolean = OuyaInput.GetButtonUp(OuyaButton.RB, player);
+	
 		// center buttons
 		var up_Start : boolean = OuyaInput.GetButtonUp(OuyaButton.START, player);
 		var up_Select : boolean = OuyaInput.GetButtonUp(OuyaButton.SELECT, player);
-		var up_System :  boolean= OuyaInput.GetButtonUp(OuyaButton.SYSTEM, player);
+		var up_System :  boolean = OuyaInput.GetButtonUp(OuyaButton.SYSTEM, player);
 	}
 }
