@@ -1162,6 +1162,43 @@ public static class OuyaInput
 		// return the button state for the frame it goes down (down event)
 		return GetButton(button, ButtonAction.UpFrame, player);
 	}
+	
+    ///
+	/// GetButton for any player controller
+	///
+	public static bool GetButton(OuyaButton button) {
+		/* this serves as the OUYA eguivalent to UNITY's Input.GetButton()
+		 * returns true if the button is pressed
+		 */
+		// returns true if this button is pressed (down state) on any controller
+		for (int p = 1; p <= playersMax; p++) {
+			if (GetButton(button, ButtonAction.Pressed, (OuyaPlayer)p)) return true;
+		}
+		return false;
+	}
+	
+	public static bool GetButtonDown(OuyaButton button) {
+		/* this serves as the OUYA eguivalent to UNITY's Input.GetButtonDown()
+		 * returns true for the frame the button actually goes down
+		 */
+		// returns true if this button went down in this frame, on any controller
+		for (int p = 1; p <= playersMax; p++) {
+			if (GetButton(button, ButtonAction.DownFrame, (OuyaPlayer)p)) return true;
+		}
+		return false;
+	}
+	
+	public static bool GetButtonUp(OuyaButton button) {
+		/* this serves as the OUYA eguivalent to UNITY's Input.GetButtonUp()
+		 * returns true for the frame the button actually goes up
+		 */
+		// returns true if this button went up in this frame, on any controller
+		for (int p = 1; p <= playersMax; p++) {
+			if (GetButton(button, ButtonAction.UpFrame, (OuyaPlayer)p)) return true;
+		}
+		return false;
+	}
+	
 	#endregion
 
 	/* -----------------------------------------------------------------------------------
@@ -1968,7 +2005,38 @@ public static class OuyaInput
 		 * this is only needed if the "Dead" values in the Input Manager Settings were set to 0.
 		 * default is 0.1f
 		 */
-		triggerThreshold = threshold;
+		triggerThreshold = treshold;
+	}
+	
+	/*
+	// on any player, return highest magnitude x,y for the given joystick (on any controller)
+	public static Vector2 GetJoystick(OuyaJoystick joystick) {
+		float maxSqrMag = 0;
+		Vector2 maxXY = Vector2.zero;
+		for (int p = 1; p <= playersMax; p++) {
+			Vector2 xy = GetJoystick(joystick, (OuyaPlayer)p);
+			float sqrMag = xy.sqrMagnitude;
+			if (sqrMag > maxSqrMag) {
+				maxSqrMag = sqrMag;
+				maxXY = xy;
+			}
+		}
+		return maxXY;
+	}
+	*/
+		
+	public static Vector2 GetJoystick(OuyaJoystick joystick) {
+		/*
+		 * for any player, return the x,y for a joystick pushed 
+		 * outside the deadzone (lowest player number, on any controller)
+		 */
+		float maxSqrMag = 0;
+		Vector2 maxXY = Vector2.zero;
+		for (int p = 1; p <= playersMax; p++) {
+			Vector2 xy = GetJoystick(joystick, (OuyaPlayer)p);
+			if (xy != Vector2.zero) return xy;
+		}
+		return Vector2.zero;
 	}
 
 	public static Vector2 GetJoystick(OuyaJoystick joystick, OuyaPlayer player) {
@@ -2027,7 +2095,20 @@ public static class OuyaInput
 		 */
 		return CalculateJoystickAngle(GetJoystick(joystick, player));
 	}
-
+	
+	public static float GetTrigger(OuyaTrigger trigger) {
+		/*
+		 * 	returns the trigger value of the trigger on any players controller
+		 *  (chooses absolute maximum across any controller)
+		 */
+		float maxv = 0;
+		for (int p = 1; p <= playersMax; p++) {
+			float v = GetTrigger(trigger, (OuyaPlayer)p);
+			if (Mathf.Abs(v) > Mathf.Abs(maxv)) maxv = v;
+		}
+		return maxv;
+	}
+	
 	public static float GetTrigger(OuyaTrigger trigger, OuyaPlayer player) {
 		/* returns the trigger axis value after clipping by trigger deadzone
 		 * this is needed if the "Dead" value in the Input Manager Settings were set to 0
