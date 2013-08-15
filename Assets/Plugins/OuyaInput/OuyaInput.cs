@@ -984,7 +984,20 @@ public static class OuyaInput
 	#endregion
 
 	#region AXIS STATE ACCESS
-
+	
+	public static float GetAxis(OuyaAxis axis) {
+		/*
+		 * 	for any players controller, return value of specified axis 
+		 * (absolute maximum across any controller)
+		 */
+		float maxv = 0;
+		for (int p = 1; p <= playersMax; p++) {
+			float v = GetAxis(axis, (OuyaPlayer)p);
+			if (Mathf.Abs(v) > Mathf.Abs(maxv)) maxv = v;
+		}
+		return maxv;
+	}
+	
 	public static float GetAxis(OuyaAxis axis, OuyaPlayer player) {
 		/* for retreiving joystick axis values from mapped Unity Input
 		 */
