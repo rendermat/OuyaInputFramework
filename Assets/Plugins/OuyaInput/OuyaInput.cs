@@ -581,6 +581,7 @@ public static class OuyaInput
 				return OuyaMapType.GameStick_CONSOLE;
 				case "SONY PLAYSTATION(R)3 CONTROLLER":
 				case "PLAYSTATION(R)3 CONTROLLER":
+			    case "SHENGHIC 2009/0708ZXW-V1Inc. PLAYSTATION(R)3Conteroller":
 				mapTypes[index] = OuyaMapType.PS3_ANDROID;
 				return OuyaMapType.PS3_ANDROID;
 				case "XBOX 360 WIRELESS RECEIVER":
@@ -611,6 +612,7 @@ public static class OuyaInput
 				return OuyaMapType.MotionInJoy_WIN;	
 				case "SONY PLAYSTATION(R)3 CONTROLLER":
 				case "PLAYSTATION(R)3 CONTROLLER":
+				case "SHENGHIC 2009/0708ZXW-V1Inc. PLAYSTATION(R)3Conteroller":
 				mapTypes[index] = OuyaMapType.PS3_WIN;
 				return OuyaMapType.PS3_WIN;
 				case "MICROSOFT WIRELESS 360 CONTROLLER":
@@ -641,6 +643,7 @@ public static class OuyaInput
 				return OuyaMapType.TattieBogle_OSX;
 				case "SONY PLAYSTATION(R)3 CONTROLLER":
 				case "PLAYSTATION(R)3 CONTROLLER":
+				case "SHENGHIC 2009/0708ZXW-V1Inc. PLAYSTATION(R)3Conteroller":
 				mapTypes[index] = OuyaMapType.PS3_OSX;
 				return OuyaMapType.PS3_OSX;
 				case "AFTERGLOW WIRED USB XBOX360 CONTROLLER":
