@@ -1288,21 +1288,21 @@ public static class OuyaInput
 				{
 					// OUYA buttons
 					case OuyaButton.O: 		return GetButton(0, buttonAction, mapPlayer);		// checked
-					case OuyaButton.U: 		return GetButton(3, buttonAction, mapPlayer);		// checked
-					case OuyaButton.Y: 		return GetButton(4, buttonAction, mapPlayer);		// checked
+					case OuyaButton.U: 		return GetButton(2, buttonAction, mapPlayer);		// checked
+					case OuyaButton.Y: 		return GetButton(3, buttonAction, mapPlayer);		// checked
 					case OuyaButton.A: 		return GetButton(1, buttonAction, mapPlayer);		// checked
 
 					// shoulder buttons	
-					case OuyaButton.LB: 	return GetButton(6, buttonAction, mapPlayer);		// checked
-					case OuyaButton.RB: 	return GetButton(7, buttonAction, mapPlayer);		// checked
+					case OuyaButton.LB: 	return GetButton(4, buttonAction, mapPlayer);		// checked
+					case OuyaButton.RB: 	return GetButton(5, buttonAction, mapPlayer);		// checked
 
 					// stick buttons	
-					case OuyaButton.L3: 	return GetButton(13, buttonAction, mapPlayer);		// checked
-					case OuyaButton.R3: 	return GetButton(14, buttonAction, mapPlayer);		// checked
+					case OuyaButton.L3: 	return GetButton(8, buttonAction, mapPlayer);		// checked
+					case OuyaButton.R3: 	return GetButton(9, buttonAction, mapPlayer);		// checked
 
 					// center buttons	
 					case OuyaButton.SELECT: return GetButton(27, buttonAction, mapPlayer);		// checked			
-					case OuyaButton.START: 	return GetButton(11, buttonAction, mapPlayer);		// checked	
+					case OuyaButton.START: 	return GetButton(10, buttonAction, mapPlayer);		// checked	
 
 					// d-pad buttons
 					// these buttons are two axis and do not give out UP or DOWN events natively
@@ -1831,17 +1831,17 @@ public static class OuyaInput
 				{
 					// ouya buttons
 					case OuyaButton.O:		return GetButton(0, buttonAction, mapPlayer);
-					case OuyaButton.U:		return GetButton(3, buttonAction, mapPlayer);
-					case OuyaButton.Y:		return GetButton(4, buttonAction, mapPlayer);
+					case OuyaButton.U:		return GetButton(2, buttonAction, mapPlayer);
+					case OuyaButton.Y:		return GetButton(3, buttonAction, mapPlayer);
 					case OuyaButton.A:		return GetButton(1, buttonAction, mapPlayer);
 
 					// shoulder buttons
-					case OuyaButton.LB:		return GetButton(6, buttonAction, mapPlayer);
-					case OuyaButton.RB:		return GetButton(7, buttonAction, mapPlayer);
+					case OuyaButton.LB:		return GetButton(4, buttonAction, mapPlayer);
+					case OuyaButton.RB:		return GetButton(5, buttonAction, mapPlayer);
 
 					// stick buttons
-					case OuyaButton.L3:		return GetButton(13, buttonAction, mapPlayer);
-					case OuyaButton.R3:		return GetButton(14, buttonAction, mapPlayer);
+					case OuyaButton.L3:		return GetButton(8, buttonAction, mapPlayer);
+					case OuyaButton.R3:		return GetButton(9, buttonAction, mapPlayer);
 
 					// d-pad buttons and trigger buttons
 					// tese buttons are axis and do not give out UP or DOWN events natively
